@@ -1,0 +1,1270 @@
+# Webalizer V2.23-08 Incremental Data - 02/11/2021 01:40:47
+2021 2 11 1 40 47
+222128 221467 248 104 62 25 94152443 220987 645 0
+8 29 22520 1 11
+118 74 3269440 32 56 20
+91 47 2773394 31 38 17
+110 84 4330517 32 56 24
+106 58 1582722 21 54 14
+126 90 3802799 27 56 19
+89879 89757 30490162 43 89611 88
+90184 90156 6948933 22 90148 227
+38692 38655 11077140 27 38595 160
+1673 1528 15485375 51 1441 38
+1076 973 11917834 45 883 34
+73 45 2474127 8 49 8
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+10026 10005 4494978 9986
+7298 7280 1470650 7283
+7282 7274 834715 7271
+7224 7210 575596 7212
+7421 7400 4619730 7351
+7274 7265 428546 7263
+7305 7300 2552953 7280
+7301 7296 2864203 7279
+7269 7266 460110 7265
+6652 6638 1848574 6632
+5747 5674 6236734 5646
+3714 3699 562180 3697
+4314 4244 7950677 4174
+7410 7375 2489343 7364
+15860 15844 14022477 15743
+24220 24209 7950675 24158
+26738 26631 17530915 26581
+10572 10558 3130517 10539
+8624 8608 1723799 8598
+7456 7420 1611731 7441
+7624 7587 5660165 7566
+8942 8913 1065466 8909
+8134 8113 649519 8111
+7721 7658 3418190 7638
+0
+0
+0
+221467
+0
+0
+0
+0
+0
+32
+0
+0
+199
+0
+128
+0
+0
+0
+0
+0
+0
+295
+3
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+4
+0
+0
+0
+0
+0
+# -urls- 
+/participantsRanking
+0 24 0 249628 3 2
+/public/js/homeController.js
+0 70 0 1172280 0 0
+/composer.json
+0 1 0 1444 0 0
+/apple-touch-icon-precomposed.png
+1 1 0 0 0 0
+/public/fonts/open-sans/OpenSans-Regular.woff2
+0 5 0 77860 0 0
+/public/img/admin.jpg
+1 5 0 15944 0 0
+/public/js/datatables/datatables.min.js
+0 5 0 807968 0 0
+/competitionVenue/59
+0 9 0 810818 0 0
+/v2/getCompetition
+0 2 0 19980 0 0
+/apple-touch-icon.png
+1 1 0 0 0 0
+/public/js/chart-js/Chart.js
+0 5 0 1225048 0 0
+/loads.php
+0 1 0 156 0 0
+/public/js/morris-js/raphael.min.js
+0 5 0 365600 0 0
+/public/img/bg.jpg
+1 5 0 2503860 0 0
+/public/js/jQuery.style.switcher.min.js
+0 5 0 11116 0 0
+/public/img/logo.jpg
+1 47 0 1281525 0 0
+/public/js/vmap/jquery.vmap.js
+0 5 0 137332 0 0
+/competitionVenue/create
+0 4 0 45176 0 0
+/competitionVenue/59/edit
+0 2 0 21844 0 0
+/api/v2/getCompetition
+0 1 0 55181 0 0
+/api/v2/stopMatchStartTimer
+0 10 0 510 0 0
+/api/v2/insertScore
+0 10 0 540 0 0
+/public/js/jquery-functions.js
+0 5 0 26392 0 0
+/competitionscores/59
+0 2 4 26560 0 0
+/sponsors/create
+0 1 0 10628 0 0
+/criteria
+0 5 0 143437 0 0
+/teamsRanking
+0 32 0 271352 5 5
+/public/js/underscore.js
+0 59 0 26979500 0 0
+/criteria/create
+0 3 0 28958 0 0
+/storage/app/image/k9BhT46i2EqQpHpt4ExANgi0kEAZrWNpUijeFL9h.png
+1 49 0 1899620 0 0
+/public/js/countTo/jquery.countTo.js
+0 5 0 15104 0 0
+/public/js/flot-js/jquery.flot.time.js
+0 5 0 35343 0 0
+/public/fonts/font-awesome/fontawesome-webfont.woff2
+0 5 0 359480 0 0
+/favicon.ico
+0 40 0 0 0 0
+/teamsRanking/.env
+0 1 0 8477 0 0
+/public/css/font/font-awesome.css
+0 5 0 141040 0 0
+/js/app.js
+0 18 0 0 0 0
+/competitionVenue/57
+0 2 0 110989 0 0
+/.env
+0 38 0 21812 0 0
+/competitionVenue
+0 19 0 1658436 0 0
+/public/css/daterangepicker/daterangepicker.css
+0 5 0 30320 0 0
+/public/js/bootstrap.min.js
+0 5 0 148180 0 0
+/public/js/menu/metisMenu.min.js
+0 5 0 23128 0 0
+/storage/app/image/XkvAn7grJnNvIHbzM35EhAirtp4IimXvlA4PGDMt.png
+1 47 0 3119760 0 0
+/storage/app/image/RaI0Re65Ho9JIjKtCmIyxWVS6Ne2UIoanr3CIVq3.png
+1 48 0 2751246 0 0
+/teams
+0 9 0 1486874 0 0
+/api/v2/login
+0 1 0 129 0 0
+/api/v2/matchStatusUpdate
+0 5 0 267 0 0
+/public/css/home.css
+0 70 0 1462963 0 0
+/public/js/daterangepicker/daterangepicker.js
+0 5 0 275908 0 0
+/api/getNotificationDetails
+0 219986 0 11171086 411 421
+/participant/1/edit
+0 2 0 106032 0 0
+/public/js/menu/nanoscroller.js
+0 5 0 52020 0 0
+/old/
+0 2 0 0 0 0
+/judges
+0 6 0 83937 0 0
+/public/js/flot-js/jquery.flot.resize.js
+0 5 0 13328 0 0
+/public/js/jquery-ui.min.js
+0 3 0 96486 0 0
+/public/js/angular.js
+0 72 0 10362122 0 0
+/public/js/morris-js/morris.min.js
+0 5 0 142660 0 0
+/public/css/theme-purple.css
+0 5 0 26580 0 0
+/competitionVenue/57/edit
+0 2 0 21713 0 0
+/competitionCriteria/233
+0 1 0 3 0 0
+/api/getAllCompetition
+0 185 0 2055871 16 1
+/login
+0 18 0 81336 1 3
+/competitionVenue/58/edit
+0 4 0 43684 0 0
+/public/css/font/font.css
+0 5 0 5790 0 0
+/public/js/flot-js/excanvas.min.js
+0 5 0 57981 0 0
+/public/css/vmap/jqvmap.css
+0 5 0 2463 0 0
+/public/css/nanoscroller.css
+0 5 0 5424 0 0
+/competitionscores/35
+0 1 0 13368 0 0
+/participant
+0 11 0 1726412 0 0
+/participant/create
+0 2 0 104912 0 0
+/teams/create
+0 1 0 10185 0 0
+/privacy
+0 5 0 900 3 0
+/competitionCriteria
+0 19 0 57 0 0
+/xmlrpc.php
+0 2 0 0 0 0
+/tmp/
+0 1 0 697 0 0
+/home
+0 13 0 175777 1 0
+/sponsors
+0 4 0 65456 0 0
+/public/s.mp3
+0 21 0 1631376 0 0
+/public/css/jquery-ui.min.css
+0 1 0 16753 0 0
+/
+0 201 0 5618836 188 37
+/api/getStopTimerStatus
+0 74 0 12210 0 0
+/competitionVenue/58
+0 2 0 125379 0 0
+/public/css/datatables/datatables.min.css
+0 5 0 30570 0 0
+/public/css/morris/morris.css
+0 5 0 1299 0 0
+/judges/2/edit
+0 1 0 11417 0 0
+/public/css/app.css
+0 5 0 473572 0 0
+/judges/10
+0 1 0 2 0 0
+/participantsRanking/.env
+0 1 0 10399 0 0
+/public/js/moment.js
+0 5 0 539624 0 0
+/teams/1/edit
+0 2 0 67520 0 0
+/public/js/teamsAdd.js
+0 3 0 1551 0 0
+/public/js/flot-js/jquery.flot.js
+0 5 0 368952 0 0
+/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+0 7 0 0 3 2
+/robots.txt
+0 91 0 0 0 0
+/public/js/jquery.min.js
+0 70 0 5664354 0 0
+/api/getTeamScoreA
+0 16 0 1572 0 0
+/testing/.env
+0 1 0 0 0 0
+/public/css/custom.css
+0 5 0 910276 0 0
+/teams/2
+0 1 0 30293 0 0
+/public/fonts/open-sans/OpenSans-Semibold.woff2
+0 4 0 64656 0 0
+/competitionscores/36
+0 1 0 11110 0 0
+/judges/create
+0 2 0 21818 0 0
+# End Of Table - urls
+# -sites- (monthly)
+40.77.167.17
+0 10 8 236938 8 1612941225
+/
+66.249.79.186
+0 3 3 29602 1 1612879437
+/api/getNotificationDetails
+103.131.71.139
+0 2 1 205 1 1612338433
+/
+173.252.95.16
+0 2 1 0 1 1612636238
+/
+38.17.55.144
+0 20 3 83019 1 1612185038
+/
+103.131.71.128
+0 3 3 59282 2 1612505043
+/privacy
+13.66.139.53
+0 8 7 255682 5 1612737867
+/teamsRanking
+207.46.13.161
+0 2 2 0 0 0
+-
+114.119.158.227
+0 1 1 0 0 0
+-
+172.58.220.147
+0 135 135 1155796 3 1612621466
+/api/getNotificationDetails
+40.77.167.70
+0 5 3 96201 2 1612430695
+/
+72.74.28.123
+0 23 23 1173 1 1612627563
+/api/getNotificationDetails
+37.79.255.195
+0 2 1 29756 1 1612600067
+/
+114.119.144.143
+0 1 1 0 0 0
+-
+35.243.240.156
+0 16 4 748882 5 1612983574
+/
+103.131.71.47
+0 1 0 0 0 0
+-
+192.71.30.89
+0 1 0 1482 0 0
+-
+207.46.13.46
+0 3 3 0 0 0
+-
+24.28.84.104
+0 13447 13446 2031869 5 1612630823
+/api/getNotificationDetails
+114.119.136.184
+0 1 1 0 0 0
+-
+173.252.111.112
+0 2 1 0 1 1612382516
+/
+119.30.39.187
+0 2 0 2964 1 1612293045
+-
+74.208.87.26
+0 2 1 787 0 0
+-
+91.250.80.102
+0 11 1 10993 2 1612646134
+/
+77.88.5.249
+0 2 1 205 1 1612687931
+/
+173.252.95.22
+0 2 1 29756 1 1612901049
+/
+73.95.133.28
+0 200 200 1352944 1 1612901451
+/api/getNotificationDetails
+115.91.254.74
+0 1 0 1482 0 0
+-
+98.160.232.29
+0 975 974 1198814 2 1612628915
+/api/getNotificationDetails
+114.119.138.170
+0 1 1 0 0 0
+-
+173.252.95.18
+0 1 1 167131 0 0
+-
+209.17.96.202
+0 1 1 29571 1 1612923667
+/
+172.8.144.115
+0 54 53 1151843 1 1612620834
+/api/getNotificationDetails
+185.244.38.151
+0 3 1 996 1 1612175874
+/
+66.249.79.169
+0 8 2 7615 5 1612879417
+/
+134.122.30.37
+0 6 2 1992 2 1612768585
+/
+173.252.95.116
+0 21 21 51010 1 1612977695
+/api/getNotificationDetails
+157.55.39.218
+0 2 1 29789 1 1612304490
+/
+106.11.159.40
+0 1 1 23983 0 0
+-
+173.252.87.23
+0 1 1 0 0 0
+-
+73.82.218.43
+0 176 175 1207464 1 1612620943
+/api/getNotificationDetails
+173.252.95.10
+0 1 1 36615 0 0
+-
+114.119.157.193
+0 1 1 0 0 0
+-
+63.81.86.132
+0 20 1 381130 0 0
+-
+114.119.159.26
+0 1 1 0 0 0
+-
+160.16.103.240
+0 1 0 1482 1 1612228941
+-
+73.37.5.195
+0 31 30 1193186 1 1612634596
+/api/getAllCompetition
+132.145.175.211
+0 33 5 103331 3 1612639993
+-
+77.88.5.135
+0 1 1 29551 1 1612148143
+/
+114.119.129.175
+0 1 1 0 0 0
+-
+24.21.133.200
+0 7566 7566 1628020 2 1612635391
+/api/getNotificationDetails
+125.165.98.162
+0 1 1 574 0 0
+-
+173.252.111.117
+0 1 1 29571 1 1612213662
+/
+103.131.71.135
+0 1 1 29551 1 1612995842
+/
+173.252.95.19
+0 3 3 62777 1 1612977668
+/api/getAllCompetition
+42.156.254.33
+0 1 0 205 1 1613004212
+/
+103.156.238.156
+0 1 0 205 1 1612457419
+/
+114.119.150.42
+0 1 1 0 0 0
+-
+34.235.111.207
+0 2 0 2964 0 0
+-
+203.78.116.101
+0 2 2 574 1 1612381821
+/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+103.131.71.48
+0 2 1 267 0 0
+-
+35.189.93.209
+0 1 0 1482 1 1612902933
+-
+34.83.91.98
+0 1 1 0 1 1612522507
+/
+100.15.122.132
+0 12016 11860 17542772 39 1612992821
+/api/getNotificationDetails
+173.252.87.116
+0 1 1 29571 1 1612820985
+/
+66.249.68.3
+0 2 2 83 1 1612879399
+/api/getNotificationDetails
+192.71.23.211
+0 1 1 0 0 0
+-
+106.11.155.50
+0 1 1 29551 1 1613004213
+/
+66.249.79.175
+0 5 2 1910 3 1612413228
+-
+106.11.152.94
+0 1 1 29551 1 1612560409
+/
+114.119.148.4
+0 1 1 0 0 0
+-
+173.252.111.23
+0 3 2 0 1 1612213660
+/
+103.131.71.44
+0 1 0 0 0 0
+-
+114.119.137.134
+0 1 1 0 0 0
+-
+31.13.127.2
+0 1 0 274 1 1612979571
+/
+114.119.134.155
+0 1 1 0 0 0
+-
+185.134.22.242
+0 2 1 29756 1 1612819034
+/
+173.252.127.6
+0 1 1 29571 1 1612288082
+/
+34.83.182.139
+0 2 1 0 1 1612522509
+/
+40.77.190.3
+0 7 7 846282 1 1612335731
+/api/getNotificationDetails
+31.13.127.5
+0 9 9 459 1 1612979587
+/api/getNotificationDetails
+13.66.139.115
+0 2 0 430 2 1613007647
+/
+216.151.27.66
+0 4 2 59536 2 1612977646
+/
+31.13.127.117
+0 2 2 43521 0 0
+-
+184.154.76.17
+0 80 56 4988124 4 1612973111
+-
+34.82.142.44
+0 2 1 0 1 1612522508
+/
+77.88.5.146
+0 1 1 29551 1 1612688016
+/
+77.88.5.220
+0 2 2 59102 2 1612310659
+/
+44.234.57.150
+0 1 1 29551 1 1612314821
+/
+192.99.18.122
+0 5 5 235096 1 1612965657
+/teamsRanking
+103.131.71.134
+0 2 2 29551 1 1612262936
+/
+219.143.197.160
+0 1 1 180 1 1612164652
+/privacy
+103.131.71.126
+0 3 3 0 0 0
+-
+209.17.97.34
+0 1 0 205 1 1612313313
+/
+51.104.242.82
+0 15 6 3729 3 1612874690
+/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+40.77.189.30
+0 8 8 859393 1 1612941246
+/api/getAllCompetition
+155.138.210.191
+0 1 0 1482 0 0
+-
+206.180.179.57
+0 2 1 29756 1 1612509660
+/
+103.131.71.52
+0 1 1 0 0 0
+-
+77.88.5.154
+0 1 1 0 0 0
+-
+66.249.79.188
+0 1 1 13081 1 1612879426
+/api/getAllCompetition
+69.171.249.1
+0 2 1 29780 1 1612901052
+/
+73.205.51.33
+0 3899 3898 1557830 2 1612910054
+/api/getNotificationDetails
+75.175.129.192
+0 908 908 1324881 4 1612650409
+/api/getNotificationDetails
+31.13.127.10
+0 5 5 13285 1 1612979579
+/api/getNotificationDetails
+34.122.114.248
+0 6 2 1976 2 1612778098
+/
+66.249.68.21
+0 3 0 627 3 1612862079
+/
+114.119.139.212
+0 1 1 0 0 0
+-
+207.46.13.215
+0 8 8 0 0 0
+-
+52.211.58.58
+0 6 0 0 0 0
+-
+157.55.39.0
+0 4 4 0 0 0
+-
+173.252.95.111
+0 1 1 29551 1 1612901052
+/
+38.132.122.210
+0 2 2 574 1 1612821027
+/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+114.119.150.5
+0 1 1 0 0 0
+-
+207.46.13.35
+0 3 2 104145 1 1612139286
+/
+173.252.127.24
+0 1 1 86660 0 0
+-
+114.119.135.237
+0 1 1 0 0 0
+-
+103.131.71.39
+0 1 1 74358 0 0
+-
+184.154.76.10
+0 60 42 3741093 3 1612714286
+-
+98.117.213.225
+0 13925 13906 2130666 5 1612982294
+/api/getNotificationDetails
+18.219.201.35
+0 6 2 1984 1 1612954281
+/
+198.71.55.250
+0 2 1 29756 1 1612565055
+/
+34.73.49.229
+0 4 2 59512 1 1612837166
+/
+66.249.68.30
+0 7 7 282875 1 1612879368
+/
+66.220.149.26
+0 1 1 0 0 0
+-
+40.77.167.43
+0 4 3 129775 1 1612313024
+/
+5.180.107.194
+0 11 3 99232 1 1612928608
+/
+103.69.217.182
+0 3127 3052 7643704 3 1613005953
+/participant
+173.252.95.1
+0 9 9 161375 1 1612977694
+/api/getNotificationDetails
+31.132.7.4
+0 2 0 414 1 1612575979
+/
+114.119.131.195
+0 1 1 0 0 0
+-
+161.97.128.124
+0 1 0 205 1 1612793525
+/
+77.88.5.221
+0 1 1 0 0 0
+-
+93.158.161.43
+0 1 0 205 1 1612148133
+/
+125.130.15.190
+0 1 1 1444 0 0
+-
+159.65.6.84
+0 6 0 5211 1 1612861245
+-
+114.119.131.218
+0 1 1 0 0 0
+-
+158.69.228.209
+0 1 1 29551 1 1612256010
+/
+40.69.80.227
+0 1 0 1482 0 0
+-
+173.252.95.27
+0 1 1 29571 1 1612636246
+/
+20.51.249.182
+0 2 0 414 1 1612183777
+/
+39.101.64.155
+0 3 0 4446 0 0
+-
+206.189.94.249
+0 1 0 1482 0 0
+-
+45.77.192.207
+0 1 0 1482 0 0
+-
+114.119.136.224
+0 1 1 0 0 0
+-
+114.119.148.13
+0 1 1 0 0 0
+-
+67.11.136.68
+0 6008 6007 1694724 28 1612700477
+/api/getNotificationDetails
+173.252.127.9
+0 2 1 0 1 1612288080
+/
+114.119.132.114
+0 1 1 0 0 0
+-
+114.119.153.114
+0 1 1 0 0 0
+-
+209.17.96.242
+0 1 1 29551 1 1612355411
+/
+104.7.54.245
+0 3 3 47014 1 1612904592
+/participantsRanking
+35.185.237.144
+0 1 1 0 1 1612522505
+/
+13.66.139.52
+0 1 0 225 1 1613007473
+/
+114.119.155.200
+0 1 1 0 0 0
+-
+103.146.202.179
+0 3 3 1722 0 0
+-
+173.252.111.21
+0 1 1 0 0 0
+-
+72.83.250.38
+0 1071 1070 1938143 4 1612787701
+/
+17.58.101.90
+0 1 1 0 0 0
+-
+162.253.129.67
+0 9 8 894880 1 1612271102
+/teamsRanking
+184.154.76.16
+0 40 28 2494062 2 1612540932
+-
+66.249.69.49
+0 2 1 1482 1 1612218230
+-
+13.66.139.43
+0 3 2 334474 1 1613004839
+/
+103.131.71.40
+0 3 1 534 0 0
+-
+31.13.127.4
+0 1 1 96006 0 0
+-
+103.131.71.136
+0 2 1 205 1 1612995836
+/
+40.121.52.120
+0 4 2 1574 0 0
+-
+62.4.14.198
+0 1 0 205 1 1612232601
+/
+107.172.229.106
+0 2 2 549989 1 1612165345
+/participantsRanking
+169.47.43.210
+0 2 1 29756 1 1612318070
+/
+185.119.81.105
+0 4 3 48664 1 1612667383
+/participantsRanking
+54.244.25.177
+0 2 1 29756 1 1612248704
+/
+104.248.6.235
+0 4 2 30011 1 1612988034
+/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+77.88.5.101
+0 1 1 0 0 0
+-
+31.13.127.13
+0 2 2 110973 0 0
+-
+62.210.10.77
+0 1 1 29551 1 1612237359
+/
+40.77.167.5
+0 2 1 29782 1 1612621867
+/
+173.252.87.11
+0 2 1 0 1 1612820983
+/
+184.154.76.12
+0 20 14 1247031 1 1612454502
+-
+207.46.13.228
+0 2 2 0 0 0
+-
+45.32.223.209
+0 1 0 1482 0 0
+-
+114.119.132.207
+0 1 1 0 0 0
+-
+114.119.161.89
+0 1 1 0 0 0
+-
+66.249.79.161
+0 9 9 698721 3 1612385486
+/api/getNotificationDetails
+173.252.87.20
+0 1 1 29571 1 1612534061
+/
+167.99.147.75
+0 1 1 574 0 0
+-
+103.131.71.132
+0 2 2 29551 1 1612917892
+/
+167.172.247.12
+0 2 2 1148 0 0
+-
+103.131.71.42
+0 1 1 0 0 0
+-
+76.17.17.185
+0 1128 1128 1206469 17 1612784974
+/api/getNotificationDetails
+124.206.180.139
+0 2 1 29756 1 1612632260
+/
+65.154.226.165
+0 29 28 1124173 1 1612208567
+/api/getNotificationDetails
+114.119.133.87
+0 1 1 0 0 0
+-
+173.252.95.120
+0 3 2 79746 1 1612901048
+/
+17.58.100.101
+0 4 4 0 0 0
+-
+114.119.137.89
+0 1 1 0 0 0
+-
+173.252.87.9
+0 2 1 0 1 1612534059
+/
+23.95.105.244
+0 2 1 29756 1 1612165332
+/
+103.131.71.53
+0 2 1 267 0 0
+-
+71.89.223.5
+0 121 114 4662794 8 1612967458
+/api/getNotificationDetails
+173.252.95.8
+0 8 8 761270 1 1612977668
+/api/getNotificationDetails
+209.17.97.106
+0 1 0 205 1 1612493402
+/
+103.17.50.126
+0 101 88 5352937 2 1612844423
+/participant
+182.185.232.248
+0 22 21 1123917 1 1612802690
+/api/getNotificationDetails
+173.252.87.120
+0 1 1 0 0 0
+-
+17.58.101.91
+0 6 5 48632 3 1612894981
+/participantsRanking
+107.165.254.102
+0 1 0 1482 1 1612870981
+-
+103.131.71.37
+0 4 3 86605 0 0
+-
+185.41.152.211
+0 5 2 1243 1 1612445278
+/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+114.119.158.165
+0 1 1 0 0 0
+-
+114.119.149.137
+0 1 1 180 1 1612270521
+/privacy
+54.188.103.43
+0 1 1 29551 1 1612769095
+/
+173.252.111.119
+0 1 1 29571 1 1612382518
+/
+196.170.15.27
+0 5 4 59667 1 1612628283
+/
+191.252.93.183
+0 2 0 414 1 1612412439
+/
+40.77.189.139
+0 7 7 859361 1 1612678877
+/api/getNotificationDetails
+34.222.183.120
+0 1 0 205 1 1612573413
+/
+207.46.13.222
+0 4 4 0 0 0
+-
+196.16.66.122
+0 1 0 1482 1 1612872744
+-
+66.249.79.164
+0 8 8 1052945 2 1612385485
+/api/getAllCompetition
+39.104.83.72
+0 3 2 1482 0 0
+-
+13.250.2.127
+0 7 0 1443 2 1612498443
+/
+192.71.142.35
+0 1 0 1482 0 0
+-
+66.249.69.38
+0 1 1 0 0 0
+-
+66.249.68.19
+0 2 2 0 0 0
+-
+66.249.69.51
+0 1 0 228 1 1612286568
+/
+114.119.151.59
+0 1 1 0 0 0
+-
+18.132.14.142
+0 2 1 29780 1 1612368631
+/
+103.49.86.0
+0 1 0 1482 1 1612871774
+-
+185.86.6.194
+0 11 3 99232 1 1612914577
+/
+188.34.202.181
+0 3 2 59307 1 1612712228
+/
+165.227.205.192
+0 6 2 1992 2 1612934180
+/
+66.249.68.23
+0 1 0 209 1 1612879364
+/
+98.211.167.136
+0 156271 156269 9536225 324 1612777741
+/api/getNotificationDetails
+173.252.95.6
+0 5 4 174920 2 1612977665
+/
+103.131.71.43
+0 1 1 86660 0 0
+-
+51.161.14.70
+0 7 6 123996 1 1612609094
+/loads.php
+103.131.71.46
+0 1 1 0 0 0
+-
+168.138.140.110
+0 2 1 29756 1 1612911014
+/
+31.13.127.9
+0 4 4 786262 1 1612979571
+/
+54.175.37.151
+0 2 0 2964 0 0
+-
+192.36.70.176
+0 1 1 29551 1 1612639385
+/
+103.156.238.152
+0 19 3 82814 1 1612457427
+/
+192.36.71.133
+0 1 0 205 1 1612639384
+/
+116.202.10.161
+0 6 6 3444 0 0
+-
+137.117.57.84
+0 9 3 2964 3 1612804530
+/
+103.131.71.50
+0 1 1 49990 0 0
+-
+31.13.127.7
+0 3 3 99741 1 1612979575
+/api/getAllCompetition
+# End Of Table - sites (monthly)
+# -sites- (daily)
+106.11.159.40
+0 1 1 23983 0 0
+-
+42.156.254.33
+0 1 0 205 1 1613004212
+/
+106.11.155.50
+0 1 1 29551 1 1613004213
+/
+13.66.139.115
+0 2 0 430 2 1613007647
+/
+103.69.217.182
+0 65 42 2418947 2 1613005953
+/participant
+13.66.139.52
+0 1 0 225 1 1613007473
+/
+103.146.202.179
+0 1 1 574 0 0
+-
+13.66.139.43
+0 1 0 212 1 1613004839
+/
+# End Of Table - sites (daily)
+# -referrers- 
+https://www.b-scored.com/judges/2/edit
+1 1
+https://b-scored.com/competitionVenue/58/edit
+1 4
+https://b-scored.com/criteria
+1 2
+https://l.instagram.com/
+0 4
+https://b-scored.com/sponsors
+1 2
+https://www.b-scored.com/judges/create
+1 6
+https://b-scored.com/participant
+1 7
+https://b-scored.com/public/css/custom.css
+1 2
+http://www.google.com/url
+1 80
+https://b-scored.com/competitionVenue/59
+1 25
+https://b-scored.com/competitionscores/36
+1 1
+https://www.b-scored.com/sponsors
+1 7
+https://www.b-scored.com/login
+1 24
+https://www.b-scored.com/public/css/font/font.css
+1 4
+http://b-scored.com
+1 4
+https://www.b-scored.com/sponsors/create
+1 2
+https://b-scored.com/competitionVenue/57
+1 13
+https://www.b-scored.com/participant/1/edit
+1 4
+https://www.b-scored.com/competitionscores/59
+1 3
+https://b-scored.com
+1 1
+https://www.b-scored.com/public/css/custom.css
+1 4
+http://b-scored.com/
+1 6
+https://www.b-scored.com/teams/2
+1 2
+http://www.b-scored.com/
+1 2
+https://www.b-scored.com/teams/create
+1 1
+https://b-scored.com/
+1 50716
+https://www.b-scored.com/public/css/font/font-awesome.css
+1 2
+https://www.google.com/
+1 4
+- (Direct Request)
+0 795
+https://www.b-scored.com/
+1 170031
+https://www.b-scored.com/home
+1 66
+https://www.b-scored.com/competitionVenue/59/edit
+1 1
+https://b-scored.com/competitionscores/35
+1 1
+https://b-scored.com/competitionVenue/create
+1 9
+https://www.b-scored.com/competitionVenue
+1 11
+https://www.b-scored.com/competitionVenue/59
+1 7
+https://b-scored.com/participantsRanking
+1 2
+https://b-scored.com/competitionVenue
+1 33
+Google
+2 89
+https://www.b-scored.com/judges
+1 11
+https://b-scored.com/competitionVenue/59/edit
+1 3
+https://www.b-scored.com/participant
+1 18
+https://b-scored.com/judges
+1 4
+https://b-scored.com/criteria/create
+1 5
+https://www.bing.com/
+0 2
+https://www.google.com
+1 5
+https://www.b-scored.com/criteria/create
+1 2
+https://www.b-scored.com/competitionVenue/58/edit
+1 1
+https://b-scored.com/login
+1 32
+https://b-scored.com/home/
+1 1
+https://b-scored.com/home
+1 101
+https://www.b-scored.com/v2/getCompetition
+1 4
+https://b-scored.com/public/css/font/font.css
+1 2
+https://b-scored.com/competitionVenue/58
+1 11
+https://www.b-scored.com/competitionVenue/create
+1 1
+https://b-scored.com/competitionVenue/57/edit
+1 7
+https://www.b-scored.com/participant/create
+1 1
+https://b-scored.com/public/css/font/font-awesome.css
+1 1
+https://b-scored.com/teams
+1 5
+https://www.b-scored.com/criteria
+1 5
+https://www.b-scored.com/teams/1/edit
+1 6
+http://b-scored.com/privacy
+1 2
+https://www.b-scored.com/teams
+1 9
+# End Of Table - referrers
+# -agents- 
+Mozilla/5.0
+0 221638
+Netscape 6 compatible
+2 221640
+SiteLockSpider [en] (WinNT; I ;Nav)
+0 120
+TprAdsTxtCrawler/1.0
+0 6
+PetalBot
+0 28
+python-requests/2.24.0
+0 8
+curl/7.68.0
+0 6
+Go-http-client/1.1
+0 5
+adreview/1.0
+0 1
+curl/7.74.0
+0 2
+Mozilla:/Mozilla/5.0
+0 2
+curl/7.58.0
+0 1
+Internet Explorer 6
+2 5
+facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)
+0 36
+Nimbostratus-Bot/v1.3
+0 4
+python-requests/2.25.1
+0 11
+MSIE 9.0
+0 84
+python-requests/2.6.0 CPython/2.7.5 Linux/3.10.0-327.el7.x86_64
+0 1
+Googlebot/2.1
+0 33
+MSIE 6.0
+0 5
+coccocbot-web/1.0
+0 15
+IDBTE4M CODE87
+0 2
+YandexBot/3.0
+0 10
+coccocbot-image/1.0
+0 19
+B-Scored/2.1 (mutee.alburraq.b-scored; build:34; iOS 14.3.0) Alamofire/4.8.0
+0 27
+python-requests/2.18.4
+0 1
+bingbot/2.0
+0 59
+# End Of Table - agents
+# -search strings- 
+# End Of Table - search strings
+# -usernames- 
+# End Of Table - usernames

@@ -1,0 +1,577 @@
+@import "custom-variables.scss";
+
+////////////////////////////// Header Panel
+#header-panel {
+
+    ////////////////////////////// Navbar
+    .navbar {
+    background-color: $pink;    
+    }//navbar
+
+    ////////////////////////////// Navbar Header
+    #navbar-header {
+        .navbar-brand.short {
+        background-color: $darken-pink;
+        }//navbar-brand.short
+    }//navbar-header
+
+    ////////////////////////////// Reports
+    .reports {
+        .badge {
+        background-color: $purple;
+
+        }//badge    
+    }//reports
+
+    ////////////////////////////// Message
+    .message {
+        .badge {
+        background-color: $green;
+        }//badge
+        .all-mails {
+            &:hover {
+                i {color:$pink;} //i:hover
+            }//hover    
+        }//all-mails
+    }//message
+
+    .message, .reports {
+    .item {
+        &:hover {
+            .icon, div {
+            color:$pink;    
+            }//icon, div
+        }//item:hover
+    }//item 
+    }//message, reports
+
+    ////////////////////////////// Search
+    .form-control {
+    background-color: $lighten-pink;
+    }//form-control
+
+    .btn-search {
+    background-color: $lighten-pink;
+        i {
+        color:$white;
+        }//i
+    }//btn-search
+
+    .navbar-form input {
+        &::-webkit-input-placeholder {
+        color: $white;
+        }
+        &:-moz-placeholder { /* Firefox 18- */
+           color: $white;  
+        }
+
+        &::-moz-placeholder {  /* Firefox 19+ */
+           color: $white;  
+        }
+
+        &:-ms-input-placeholder {  
+           color: $white;  
+        }       
+    }
+    
+    ////////////////////////////// User Menu
+    .user-menu {       
+        .dropdown-menu { 
+        li {    
+            .badge {
+            background-color: $pink;
+
+            }//badge
+            &:hover {
+                a, span, i {
+                color:$pink;
+                }//a
+                .badge {
+                color:$white;   
+                }//badge
+            }//hover
+        }//li       
+        }//dropdown-menu
+    }//user-menu
+
+}//header-panel
+
+////////////////////////////// Navigation Panel
+#navigation-panel {
+
+    ////////////////////////////// Sidebar
+    .sidebar {
+        li {
+            a {
+                &:hover {
+                color:$pink;
+                    span, i {
+                    color:$pink;
+                    }//span
+                }//a:hover
+
+            }//a
+                
+            a.active {
+            color:$pink;
+                span, i {
+                color:$pink;        
+                }//span
+            }//a.active
+
+            }//li
+
+            li.active { 
+            color:$pink;        
+                span, i {
+                color:$pink;    
+                }//span, i
+            
+            > .chevron {
+                &:after {
+                color:$pink;
+                }//after    
+            }//chevron
+
+            > a:focus {
+            color:$pink;    
+                span, i {
+                color:$pink;    
+                }//span
+            }//focus
+
+            }//li active
+
+    }//sidebar
+
+}//navigation-panel
+
+////////////////////////////// Content Panel
+#content-panel {
+.note-editor.panel {
+box-shadow: none;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;  
+}//note-editor.panel 
+    ////////////////////////////// Breadcrumb
+    .breadcrumb {
+        li {
+            a {
+                &:hover, &:focus {
+                color:$pink;
+                }//a:hover, a:focus
+            }// a
+            a.active {
+            color:$pink;
+            }//a.active
+        }//li
+    }//breadcrumb
+
+    ////////////////////////////// Panel
+    .panel {
+        .dropdown-menu > li > a {
+        &:hover, &:focus {color:$pink;}
+        }//dropdown-menu > li > a   
+    }//panel
+
+    ////////////////////////////// stat-item
+    .stat-item {
+
+        .panel-body {   
+        background-color: $pink;        
+            h2 {
+            color:$white;
+            }//h2
+        }//panel-body
+        
+        .panel-footer {
+        background-color: $darken-pink;
+        h5{color:$white;}
+        }//panel-footer
+
+    }//stat-item
+
+    ////////////////////////////// vmap
+    #vmap {
+        .jqvmap-zoomin, .jqvmap-zoomout {
+            &:hover {
+            background-color: $pink;
+            }//hover
+        }//jqvmap-zoomin, .jqvmap-zoomout
+    }//vmap
+
+    ////////////////////////////// btn-to-do, btn-chat, btn-table
+    .btn-to-do, .btn-chat, .btn-table {
+    background-color: $pink;
+        &:hover {
+        background-color: $darken-pink;
+        }//hover
+        &:focus {
+        background-color: $darken-pink;
+        }//hover
+    }//btn-to-do, btn-chat, btn-table
+
+}//content-panel
+
+////////////////////////////// fontawesome-icon-list    
+.fontawesome-icon-list {
+    a {
+        &:hover, &:focus {
+        color:$pink;    
+        }//hover
+    }//i, span
+}//fontawesome-icon-list
+    
+////////////////////////////// Inbox
+.inbox {
+
+    .right {
+
+    .inbox-body {
+    padding: 0px;
+
+        .btn-group {
+    
+            &:hover, &:focus {
+                a, i {
+                color:$pink;
+                }//i
+            }//hover
+    
+        }//btn-group
+
+        .btn-group.open {
+            .dropdown-menu a {
+                &:hover, &:focus {
+                color:$pink;    
+                }//hover
+            }//dropdown-menu a
+        }//btn-group.open   
+
+        .refresh {
+            a:hover, &:focus {
+                i {
+                color:$pink;
+                }//i
+            }//hover
+        }//refresh
+
+    .inbox-pagination {
+        a.np-btn {
+            &:hover, &:focus {
+            background-color: darken($gray,3%);
+            border:1px solid darken($gray,3%);
+                i {
+                color:$pink;    
+                }//i
+            }//hover
+        }//a.np-btn
+    }//inbox-pagination
+
+    }//inbox-body
+
+    }//right
+
+}//inbox
+
+////////////////////////////////// Message Detalis
+#message-detalis {
+
+    .media {
+        .text-primary {
+        color:$pink;    
+        }//text-primary
+    }//media
+    
+    .reply a {
+    color:$pink;    
+    }//reply a
+
+}//message-detalis
+
+////////////////////////////////// Link
+.link {
+    &:hover, &:focus, &:active {
+    color:$pink;
+    }//hover, focus
+}//link
+
+////////////////////////////////// Buttons Group
+.btn-group {
+    .dropdown-menu {
+        li {
+            &:hover {
+                a {
+                color:$pink;    
+                }//a
+            }//hover
+        }//li
+    }//dropdown-menu
+
+    .btn.dash-button {
+        &:focus {
+        span {color:$pink;}
+        }//focus
+        &:hover, {
+        span {color:$pink;}
+        }//focus
+    }//btn
+    
+}//btn-group
+
+.btn-group.open {
+    
+    .btn.dash-button {
+        span {
+        color:$pink;
+        }//span
+    }//btn.dash-button
+
+}//btn-group.open
+
+////////////////////////////////// List
+.list-group-item.active {
+background-color: $lighten-pink;
+border:1px solid $lighten-pink;
+color:$white;
+    &:hover, &:focus {
+    background-color: $lighten-pink;
+    border:1px solid $lighten-pink;
+        .list-group-item-heading,
+        .list-group-item-text {
+        color:$white;   
+        }//list-group-item-text
+    }//hover
+    .list-group-item-text {
+    color:$white;   
+    }//list-group-item-text
+    .list-group-item-heading {
+    color:$white;   
+    }//list-group-item-heading
+}//active
+
+.list-group.link,
+.list-group.button {
+    .list-group-item {
+        &:hover, &:focus {
+        background-color: $pink;
+            .list-group-item-heading {
+            color:$white;   
+            }//list-group-item-heading
+            .list-group-item-text {
+            color:$white;   
+            }//list-group-item-heading
+        }//hover
+    }//list-group-item
+}//list-group-item.link
+
+.list-group-item.disabled {
+background-color: $pink;
+    &:hover, &:focus {
+    background-color: $darken-pink;
+    }//hover
+}//list-group-item.disabled
+
+////////////////////////////////// Tabs 
+.nav-tabs {
+    > li a {
+        &:hover, &:focus {
+        background-color: $pink;
+        }//a:hover
+    }//li
+    
+    li.active a {
+    background-color: $pink;
+        &:focus, &:hover {
+        background-color: $pink;
+        }//focus, hover
+    }//li.active
+
+}//nav-tabs
+
+.nav-stacked {
+    li {
+        a {
+            &:hover, &:focus {
+            background-color: $pink;
+            }//hover
+        }//a    
+    }//li
+}//nav-stacked
+
+.nav-pills {
+    li {
+        a {
+            &:hover, &:focus {
+            background-color: $pink;
+            }//hover
+        }//a    
+    }//li
+    li.active > a {
+    background-color: $pink;
+        &:hover, &:focus {
+        background-color: $pink;
+        }//hover
+    }//active
+}//nav-pills
+
+////////////////////////////////// Form
+.form-control {
+
+    &:focus {
+    border-color: $pink;    
+    }//focus
+
+}//form-control 
+
+.input-group-addon {
+background-color: $pink;
+}//input-group-addon
+
+////////////////////////////////// Tagsinput
+.bootstrap-tagsinput.focus {
+border:1px solid $pink; 
+}//bootstrap-tagsinput.focus
+
+////////////////////////////////// Summernote
+.note-editor  {
+
+    .btn-default {
+    background-color: $pink;
+    border:1px solid $pink;
+        &:hover {
+        background-color: $darken-pink;
+        border:1px solid $darken-pink;
+        }//hover 
+    }//note-btn
+    
+    .btn-group {
+    margin-top: 0px;    
+    }//btn-group
+
+    .open > .btn-default.dropdown-toggle {
+    background-color: $pink;
+    border:1px solid $pink; 
+    }//open
+
+}//note-editor 
+
+
+////////////////////////////////// Touch Spin
+.bootstrap-touchspin {
+
+    .bootstrap-touchspin-up,
+    .bootstrap-touchspin-down {
+    background-color: $pink;
+    border:1px solid $pink;
+        &:hover {
+        background-color: $darken-pink;
+        border:1px solid $darken-pink;
+        }//hover 
+    }//bootstrap-touchspin-up, bootstrap-touchspin-down
+    
+}//bootstrap-touchspin
+
+////////////////////////////////// Table
+
+.dt-buttons {
+
+    a.dt-button {
+    
+    &:hover, &:active {
+    background-color: $darken-pink;
+    }//hover, active
+
+    }//dt-button
+}//dt-buttons
+
+////////////////////////////////// Data Table
+.dataTables_wrapper {
+
+    .dataTables_filter {
+        input {
+            &:focus {
+            border:1px solid $pink;
+            }//focus
+        }//input
+    }//dataTables_filter
+
+    .dataTables_paginate {
+        .paginate_button,
+        .paginate_button.disabled {
+            &:hover {
+            background-color: $pink;
+            border:1px solid $pink;
+            }//hover
+        }//paginate_button
+
+        .current {
+        background: $pink;
+        border:1px solid $pink;
+        }//current
+        
+    }//dataTables_paginate
+
+}//dataTables_wrapper
+
+////////////////////////////////// Date Range Picker Custom Style
+.daterangepicker {
+    .daterangepicker_input input:focus {
+    border:1px solid $pink; 
+    }//daterangepicker_input input:focus
+
+    .ranges li {
+        
+        &:hover {
+        background-color: $pink;
+        border:1px solid $pink;
+        }//hover
+
+        &:active, &:focus {
+        background-color: $pink;
+        border:1px solid $pink;
+        }//active
+        
+    }//ranges li
+
+    .input-mini.active {
+    border:1px solid $pink;
+    
+    }//input-mini
+
+    td.active {
+    background-color: $pink;
+    border:0px;
+    color:$white;
+    }//td.active
+
+    td.active.end-date {
+    background-color: $pink;
+    }//td.active.end-date 
+    
+    .prev.available,
+    .next.available {
+        &:hover {
+        color:$pink;
+        }//hover
+    }//prev.available, next.availabl
+    
+}//daterangepicker
+
+////////////////////////////////// Theme Setting Live Editor
+#button-settings {
+background-color: $pink;
+}//button-settings
+
+#button-settings.active {
+background-color: $darken-pink;
+}//button-settings active
+
+#theme-settings {
+background-color: $pink;
+
+    .header {
+    background-color: $darken-pink;
+    }//header
+
+}//theme-settings

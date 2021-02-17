@@ -1,0 +1,577 @@
+@import "custom-variables.scss";
+
+////////////////////////////// Header Panel
+#header-panel {
+
+    ////////////////////////////// Navbar
+    .navbar {
+    background-color: $blue;    
+    }//navbar
+
+    ////////////////////////////// Navbar Header
+    #navbar-header {
+        .navbar-brand.short {
+        background-color: $darken-blue;
+        }//navbar-brand.short
+    }//navbar-header
+
+    ////////////////////////////// Reports
+    .reports {
+        .badge {
+        background-color: $red;
+
+        }//badge    
+    }//reports
+
+    ////////////////////////////// Message
+    .message {
+        .badge {
+        background-color: $orange;
+        }//badge
+        .all-mails {
+            &:hover {
+                i {color:$blue;} //i:hover
+            }//hover    
+        }//all-mails
+    }//message
+
+    .message, .reports {
+    .item {
+        &:hover {
+            .icon, div {
+            color:$blue;    
+            }//icon, div
+        }//item:hover
+    }//item 
+    }//message, reports
+
+    ////////////////////////////// Search
+    .form-control {
+    background-color: $lighten-blue;
+    }//form-control
+
+    .btn-search {
+    background-color: $lighten-blue;
+        i {
+        color:$white;
+        }//i
+    }//btn-search
+
+    .navbar-form input {
+        &::-webkit-input-placeholder {
+        color: $white;
+        }
+        &:-moz-placeholder { /* Firefox 18- */
+           color: $white;  
+        }
+
+        &::-moz-placeholder {  /* Firefox 19+ */
+           color: $white;  
+        }
+
+        &:-ms-input-placeholder {  
+           color: $white;  
+        }       
+    }
+    
+    ////////////////////////////// User Menu
+    .user-menu {       
+        .dropdown-menu { 
+        li {    
+            .badge {
+            background-color: $blue;
+
+            }//badge
+            &:hover {
+                a, span, i {
+                color:$blue;
+                }//a
+                .badge {
+                color:$white;   
+                }//badge
+            }//hover
+        }//li       
+        }//dropdown-menu
+    }//user-menu
+
+}//header-panel
+
+////////////////////////////// Navigation Panel
+#navigation-panel {
+
+    ////////////////////////////// Sidebar
+    .sidebar {
+        li {
+            a {
+                &:hover {
+                color:$blue;
+                    span, i {
+                    color:$blue;
+                    }//span
+                }//a:hover
+
+            }//a
+                
+            a.active {
+            color:$blue;
+                span, i {
+                color:$blue;        
+                }//span
+            }//a.active
+
+            }//li
+
+            li.active { 
+            color:$blue;        
+                span, i {
+                color:$blue;    
+                }//span, i
+            
+            > .chevron {
+                &:after {
+                color:$blue;
+                }//after    
+            }//chevron
+
+            > a:focus {
+            color:$blue;    
+                span, i {
+                color:$blue;    
+                }//span
+            }//focus
+
+            }//li active
+
+    }//sidebar
+
+}//navigation-panel
+
+////////////////////////////// Content Panel
+#content-panel {
+.note-editor.panel {
+box-shadow: none;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;  
+}//note-editor.panel 
+    ////////////////////////////// Breadcrumb
+    .breadcrumb {
+        li {
+            a {
+                &:hover, &:focus {
+                color:$blue;
+                }//a:hover, a:focus
+            }// a
+            a.active {
+            color:$blue;
+            }//a.active
+        }//li
+    }//breadcrumb
+
+    ////////////////////////////// Panel
+    .panel {
+        .dropdown-menu > li > a {
+        &:hover, &:focus {color:$blue;}
+        }//dropdown-menu > li > a   
+    }//panel
+
+    ////////////////////////////// stat-item
+    .stat-item {
+
+        .panel-body {   
+        background-color: $blue;        
+            h2 {
+            color:$white;
+            }//h2
+        }//panel-body
+        
+        .panel-footer {
+        background-color: $darken-blue;
+        h5{color:$white;}
+        }//panel-footer
+
+    }//stat-item
+
+    ////////////////////////////// vmap
+    #vmap {
+        .jqvmap-zoomin, .jqvmap-zoomout {
+            &:hover {
+            background-color: $blue;
+            }//hover
+        }//jqvmap-zoomin, .jqvmap-zoomout
+    }//vmap
+
+    ////////////////////////////// btn-to-do, btn-chat, btn-table
+    .btn-to-do, .btn-chat, .btn-table {
+    background-color: $blue;
+        &:hover {
+        background-color: $darken-blue;
+        }//hover
+        &:focus {
+        background-color: $darken-blue;
+        }//hover
+    }//btn-to-do, btn-chat, btn-table
+
+}//content-panel
+
+////////////////////////////// fontawesome-icon-list    
+.fontawesome-icon-list {
+    a {
+        &:hover, &:focus {
+        color:$blue;    
+        }//hover
+    }//i, span
+}//fontawesome-icon-list
+    
+////////////////////////////// Inbox
+.inbox {
+
+    .right {
+
+    .inbox-body {
+    padding: 0px;
+
+        .btn-group {
+    
+            &:hover, &:focus {
+                a, i {
+                color:$blue;
+                }//i
+            }//hover
+    
+        }//btn-group
+
+        .btn-group.open {
+            .dropdown-menu a {
+                &:hover, &:focus {
+                color:$blue;    
+                }//hover
+            }//dropdown-menu a
+        }//btn-group.open   
+
+        .refresh {
+            a:hover, &:focus {
+                i {
+                color:$blue;
+                }//i
+            }//hover
+        }//refresh
+
+    .inbox-pagination {
+        a.np-btn {
+            &:hover, &:focus {
+            background-color: darken($gray,3%);
+            border:1px solid darken($gray,3%);
+                i {
+                color:$blue;    
+                }//i
+            }//hover
+        }//a.np-btn
+    }//inbox-pagination
+
+    }//inbox-body
+
+    }//right
+
+}//inbox
+
+////////////////////////////////// Message Detalis
+#message-detalis {
+
+    .media {
+        .text-primary {
+        color:$blue;    
+        }//text-primary
+    }//media
+    
+    .reply a {
+    color:$blue;    
+    }//reply a
+
+}//message-detalis
+
+////////////////////////////////// Link
+.link {
+    &:hover, &:focus, &:active {
+    color:$blue;
+    }//hover, focus
+}//link
+
+////////////////////////////////// Buttons Group
+.btn-group {
+    .dropdown-menu {
+        li {
+            &:hover {
+                a {
+                color:$blue;    
+                }//a
+            }//hover
+        }//li
+    }//dropdown-menu
+
+    .btn.dash-button {
+        &:focus {
+        span {color:$blue;}
+        }//focus
+        &:hover, {
+        span {color:$blue;}
+        }//focus
+    }//btn
+    
+}//btn-group
+
+.btn-group.open {
+    
+    .btn.dash-button {
+        span {
+        color:$blue;
+        }//span
+    }//btn.dash-button
+
+}//btn-group.open
+
+////////////////////////////////// List
+.list-group-item.active {
+background-color: $lighten-blue;
+border:1px solid $lighten-blue;
+color:$white;
+    &:hover, &:focus {
+    background-color: $lighten-blue;
+    border:1px solid $lighten-blue;
+        .list-group-item-heading,
+        .list-group-item-text {
+        color:$white;   
+        }//list-group-item-text
+    }//hover
+    .list-group-item-text {
+    color:$white;   
+    }//list-group-item-text
+    .list-group-item-heading {
+    color:$white;   
+    }//list-group-item-heading
+}//active
+
+.list-group.link,
+.list-group.button {
+    .list-group-item {
+        &:hover, &:focus {
+        background-color: $blue;
+            .list-group-item-heading {
+            color:$white;   
+            }//list-group-item-heading
+            .list-group-item-text {
+            color:$white;   
+            }//list-group-item-heading
+        }//hover
+    }//list-group-item
+}//list-group-item.link
+
+.list-group-item.disabled {
+background-color: $blue;
+    &:hover, &:focus {
+    background-color: $darken-blue;
+    }//hover
+}//list-group-item.disabled
+
+////////////////////////////////// Tabs 
+.nav-tabs {
+    > li a {
+        &:hover, &:focus {
+        background-color: $blue;
+        }//a:hover
+    }//li
+    
+    li.active a {
+    background-color: $blue;
+        &:focus, &:hover {
+        background-color: $blue;
+        }//focus, hover
+    }//li.active
+
+}//nav-tabs
+
+.nav-stacked {
+    li {
+        a {
+            &:hover, &:focus {
+            background-color: $blue;
+            }//hover
+        }//a    
+    }//li
+}//nav-stacked
+
+.nav-pills {
+    li {
+        a {
+            &:hover, &:focus {
+            background-color: $blue;
+            }//hover
+        }//a    
+    }//li
+    li.active > a {
+    background-color: $blue;
+        &:hover, &:focus {
+        background-color: $blue;
+        }//hover
+    }//active
+}//nav-pills
+
+////////////////////////////////// Form
+.form-control {
+
+    &:focus {
+    border-color: $blue;    
+    }//focus
+
+}//form-control 
+
+.input-group-addon {
+background-color: $blue;
+}//input-group-addon
+
+////////////////////////////////// Tagsinput
+.bootstrap-tagsinput.focus {
+border:1px solid $blue; 
+}//bootstrap-tagsinput.focus
+
+////////////////////////////////// Summernote
+.note-editor  {
+
+    .btn-default {
+    background-color: $blue;
+    border:1px solid $blue;
+        &:hover {
+        background-color: $darken-blue;
+        border:1px solid $darken-blue;
+        }//hover 
+    }//note-btn
+    
+    .btn-group {
+    margin-top: 0px;    
+    }//btn-group
+
+    .open > .btn-default.dropdown-toggle {
+    background-color: $blue;
+    border:1px solid $blue; 
+    }//open
+
+}//note-editor 
+
+
+////////////////////////////////// Touch Spin
+.bootstrap-touchspin {
+
+    .bootstrap-touchspin-up,
+    .bootstrap-touchspin-down {
+    background-color: $blue;
+    border:1px solid $blue;
+        &:hover {
+        background-color: $darken-blue;
+        border:1px solid $darken-blue;
+        }//hover 
+    }//bootstrap-touchspin-up, bootstrap-touchspin-down
+    
+}//bootstrap-touchspin
+
+////////////////////////////////// Table
+
+.dt-buttons {
+
+    a.dt-button {
+    
+    &:hover, &:active {
+    background-color: $darken-blue;
+    }//hover, active
+
+    }//dt-button
+}//dt-buttons
+
+////////////////////////////////// Data Table
+.dataTables_wrapper {
+
+    .dataTables_filter {
+        input {
+            &:focus {
+            border:1px solid $blue;
+            }//focus
+        }//input
+    }//dataTables_filter
+
+    .dataTables_paginate {
+        .paginate_button,
+        .paginate_button.disabled {
+            &:hover {
+            background-color: $blue;
+            border:1px solid $blue;
+            }//hover
+        }//paginate_button
+
+        .current {
+        background: $blue;
+        border:1px solid $blue;
+        }//current
+        
+    }//dataTables_paginate
+
+}//dataTables_wrapper
+
+////////////////////////////////// Date Range Picker Custom Style
+.daterangepicker {
+    .daterangepicker_input input:focus {
+    border:1px solid $blue; 
+    }//daterangepicker_input input:focus
+
+    .ranges li {
+        
+        &:hover {
+        background-color: $blue;
+        border:1px solid $blue;
+        }//hover
+
+        &:active, &:focus {
+        background-color: $blue;
+        border:1px solid $blue;
+        }//active
+        
+    }//ranges li
+
+    .input-mini.active {
+    border:1px solid $blue;
+    
+    }//input-mini
+
+    td.active {
+    background-color: $blue;
+    border:0px;
+    color:$white;
+    }//td.active
+
+    td.active.end-date {
+    background-color: $blue;
+    }//td.active.end-date 
+    
+    .prev.available,
+    .next.available {
+        &:hover {
+        color:$blue;
+        }//hover
+    }//prev.available, next.availabl
+    
+}//daterangepicker
+
+////////////////////////////////// Theme Setting Live Editor
+#button-settings {
+background-color: $blue;
+}//button-settings
+
+#button-settings.active {
+background-color: $darken-blue;
+}//button-settings active
+
+#theme-settings {
+background-color: $blue;
+
+    .header {
+    background-color: $darken-blue;
+    }//header
+
+}//theme-settings

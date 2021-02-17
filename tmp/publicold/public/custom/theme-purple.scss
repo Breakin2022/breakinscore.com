@@ -1,0 +1,565 @@
+@import "custom-variables.scss";
+
+////////////////////////////// Header Panel
+#header-panel {
+
+    ////////////////////////////// Navbar
+    .navbar {
+    background-color: $purple;  
+    }//navbar
+
+    ////////////////////////////// Navbar Header
+    #navbar-header {
+        .navbar-brand.short {
+        background-color: $darken-purple;
+        }//navbar-brand.short
+    }//navbar-header
+
+    ////////////////////////////// Reports
+    .reports {
+        .badge {
+        background-color: $red;
+
+        }//badge    
+    }//reports
+
+    ////////////////////////////// Message
+    .message {
+        .badge {
+        background-color: $orange;
+        }//badge
+        .all-mails {
+            &:hover {
+                i {color:$purple;} //i:hover
+            }//hover    
+        }//all-mails
+    }//message
+
+    .message, .reports {
+    .item {
+        &:hover {
+            .icon, div {
+            color:$purple;  
+            }//icon, div
+        }//item:hover
+    }//item 
+    }//message, reports
+
+    ////////////////////////////// Search
+    .form-control {
+    background-color: $lighten-purple;
+    }//form-control
+
+    .btn-search {
+    background-color: $lighten-purple;
+        i {
+        color:$white;
+        }//i
+    }//btn-search
+
+    .navbar-form input {
+        &::-webkit-input-placeholder {
+        color: $white;
+        }
+        &:-moz-placeholder { /* Firefox 18- */
+           color: $white;  
+        }
+
+        &::-moz-placeholder {  /* Firefox 19+ */
+           color: $white;  
+        }
+
+        &:-ms-input-placeholder {  
+           color: $white;  
+        }       
+    }
+    
+    ////////////////////////////// User Menu
+    .user-menu {       
+        .dropdown-menu { 
+        li {    
+            .badge {
+            background-color: $purple;
+
+            }//badge
+            &:hover {
+                a, span, i {
+                color:$purple;
+                }//a
+                .badge {
+                color:$white;   
+                }//badge
+            }//hover
+        }//li       
+        }//dropdown-menu
+    }//user-menu
+
+}//header-panel
+
+////////////////////////////// Navigation Panel
+#navigation-panel {
+
+    ////////////////////////////// Sidebar
+    .sidebar {
+        li {
+            a {
+                &:hover {
+                color:$purple;
+                    span, i {
+                    color:$purple;
+                    }//span
+                }//a:hover
+
+            }//a
+                
+            a.active {
+            color:$purple;
+                span, i {
+                color:$purple;      
+                }//span
+            }//a.active
+
+            }//li
+
+            li.active { 
+            color:$purple;      
+                span, i {
+                color:$purple;  
+                }//span, i
+            
+            > .chevron {
+                &:after {
+                color:$purple;
+                }//after    
+            }//chevron
+
+            > a:focus {
+            color:$purple;  
+                span, i {
+                color:$purple;  
+                }//span
+            }//focus
+
+            }//li active
+
+    }//sidebar
+
+}//navigation-panel
+
+////////////////////////////// Content Panel
+#content-panel {
+
+    ////////////////////////////// Breadcrumb
+    .breadcrumb {
+        li {
+            a {
+                &:hover, &:focus {
+                color:$purple;
+                }//a:hover, a:focus
+            }// a
+            a.active {
+            color:$purple;
+            }//a.active
+        }//li
+    }//breadcrumb
+
+    ////////////////////////////// Panel
+    .panel {
+        .dropdown-menu > li > a {
+        &:hover, &:focus {color:$purple;}
+        }//dropdown-menu > li > a   
+    }//panel
+
+    ////////////////////////////// stat-item
+    .stat-item {
+
+        .panel-body {   
+        background-color: $purple;      
+            h2 {
+            color:$white;
+            }//h2
+        }//panel-body
+        
+        .panel-footer {
+        background-color: $darken-purple;
+        h5{color:$white;}
+        }//panel-footer
+
+    }//stat-item
+
+    ////////////////////////////// vmap
+    #vmap {
+        .jqvmap-zoomin, .jqvmap-zoomout {
+            &:hover {
+            background-color: $purple;
+            }//hover
+        }//jqvmap-zoomin, .jqvmap-zoomout
+    }//vmap
+
+    ////////////////////////////// btn-to-do, btn-chat, btn-table
+    .btn-to-do, .btn-chat, .btn-table {
+    background-color: $purple;
+        &:hover {
+        background-color: $darken-purple;
+        }//hover
+        &:focus {
+        background-color: $darken-purple;
+        }//hover
+    }//btn-to-do, btn-chat, btn-table
+
+}//content-panel
+
+////////////////////////////// fontawesome-icon-list    
+.fontawesome-icon-list {
+    a {
+        &:hover, &:focus {
+        color:$purple;  
+        }//hover
+    }//i, span
+}//fontawesome-icon-list
+    
+////////////////////////////// Inbox
+.inbox {
+
+    .right {
+
+    .inbox-body {
+    padding: 0px;
+
+        .btn-group {
+    
+            &:hover, &:focus {
+                a, i {
+                color:$purple;
+                }//i
+            }//hover
+    
+        }//btn-group
+
+        .refresh {
+            a:hover, &:focus {
+                i {
+                color:$purple;
+                }//i
+            }//hover
+        }//refresh
+
+    .inbox-pagination {
+        a.np-btn {
+            &:hover, &:focus {
+            background-color: darken($gray,3%);
+            border:1px solid darken($gray,3%);
+            color:$font-color1;
+                i {
+                color:$purple;  
+                }//i
+            }//hover
+        }//a.np-btn
+    }//inbox-pagination
+
+    }//inbox-body
+
+    }//right
+
+}//inbox
+
+////////////////////////////////// Message Detalis
+#message-detalis {
+
+    .media {
+        .text-primary {
+        color:$purple;  
+        }//text-primary
+    }//media
+    
+    .reply a {
+    color:$purple;  
+    }//reply a
+
+}//message-detalis
+
+////////////////////////////////// Link
+.link {
+    &:hover, &:focus, &:active {
+    color:$purple;
+    }//hover, focus
+}//link
+
+////////////////////////////////// Buttons Group
+.btn-group {
+    .dropdown-menu {
+        li {
+            &:hover {
+                a {
+                color:$purple;  
+                }//a
+            }//hover
+        }//li
+    }//dropdown-menu
+
+    .btn.dash-button {
+        &:focus {
+        span {color:$purple;}
+        }//focus
+        &:hover, {
+        span {color:$purple;}
+        }//focus
+    }//btn
+    
+}//btn-group
+
+.btn-group.open {
+    
+    .btn.dash-button {
+        span {
+        color:$purple;
+        }//span
+    }//btn.dash-button
+
+}//btn-group.open
+
+////////////////////////////////// List
+.list-group-item.active {
+background-color: $lighten-purple;
+border:1px solid $lighten-purple;
+color:$white;
+    &:hover, &:focus {
+    background-color: $lighten-purple;
+    border:1px solid $lighten-purple;
+        .list-group-item-heading,
+        .list-group-item-text {
+        color:$white;   
+        }//list-group-item-text
+    }//hover
+    .list-group-item-text {
+    color:$white;   
+    }//list-group-item-text
+    .list-group-item-heading {
+    color:$white;   
+    }//list-group-item-heading
+}//active
+
+.list-group.link,
+.list-group.button {
+    .list-group-item {
+        &:hover, &:focus {
+        background-color: $purple;
+            .list-group-item-heading {
+            color:$white;   
+            }//list-group-item-heading
+            .list-group-item-text {
+            color:$white;   
+            }//list-group-item-heading
+        }//hover
+    }//list-group-item
+}//list-group-item.link
+
+.list-group-item.disabled {
+background-color: $purple;
+    &:hover, &:focus {
+    background-color: $darken-purple;
+    }//hover
+}//list-group-item.disabled
+
+////////////////////////////////// Tabs 
+.nav-tabs {
+    > li a {
+        &:hover, &:focus {
+        background-color: $purple;
+        }//a:hover
+    }//li
+    
+    li.active a {
+    background-color: $purple;
+        &:focus, &:hover {
+        background-color: $purple;
+        }//focus, hover
+    }//li.active
+
+}//nav-tabs
+
+.nav-stacked {
+    li {
+        a {
+            &:hover, &:focus {
+            background-color: $purple;
+            }//hover
+        }//a    
+    }//li
+}//nav-stacked
+
+.nav-pills {
+    li {
+        a {
+            &:hover, &:focus {
+            background-color: $purple;
+            }//hover
+        }//a    
+    }//li
+    li.active > a {
+    background-color: $purple;
+        &:hover, &:focus {
+        background-color: $purple;
+        }//hover
+    }//active
+}//nav-pills
+
+////////////////////////////////// Form
+.form-control {
+
+    &:focus {
+    border-color: $purple;  
+    }//focus
+
+}//form-control 
+
+.input-group-addon {
+background-color: $purple;
+}//input-group-addon
+
+////////////////////////////////// Tagsinput
+.bootstrap-tagsinput.focus {
+border:1px solid $purple;   
+}//bootstrap-tagsinput.focus
+
+////////////////////////////////// Summernote
+.note-editor  {
+
+    .btn-default {
+    background-color: $purple;
+    border:1px solid $purple;
+        &:hover {
+        background-color: $darken-purple;
+        border:1px solid $darken-purple;
+        }//hover 
+    }//note-btn
+    
+    .btn-group {
+    margin-top: 0px;    
+    }//btn-group
+
+    .open > .btn-default.dropdown-toggle {
+    background-color: $purple;
+    border:1px solid $purple;   
+    }//open
+
+}//note-editor 
+
+////////////////////////////////// Touch Spin
+.bootstrap-touchspin {
+
+    .bootstrap-touchspin-up,
+    .bootstrap-touchspin-down {
+    background-color: $purple;
+    border:1px solid $purple;
+        &:hover {
+        background-color: $darken-purple;
+        border:1px solid $darken-purple;
+        }//hover 
+    }//bootstrap-touchspin-up, bootstrap-touchspin-down
+    
+}//bootstrap-touchspin
+
+////////////////////////////////// Table
+
+.dt-buttons {
+
+    a.dt-button {
+    
+    &:hover, &:active {
+    background-color: $darken-purple;
+    }//hover, active
+
+    }//dt-button
+}//dt-buttons
+
+////////////////////////////////// Data Table
+.dataTables_wrapper {
+
+    .dataTables_filter {
+        input {
+            &:focus {
+            border:1px solid $purple;
+            }//focus
+        }//input
+    }//dataTables_filter
+
+    .dataTables_paginate {
+        .paginate_button,
+        .paginate_button.disabled {
+            &:hover {
+            background-color: $purple;
+            border:1px solid $purple;
+            }//hover
+        }//paginate_button
+
+        .current {
+        background: $purple;
+        border:1px solid $purple;
+        }//current
+        
+    }//dataTables_paginate
+
+}//dataTables_wrapper
+
+////////////////////////////////// Date Range Picker Custom Style
+.daterangepicker {
+    .daterangepicker_input input:focus {
+    border:1px solid $purple;   
+    }//daterangepicker_input input:focus
+
+    .ranges li {
+
+        &:hover {
+        background-color: $purple;
+        border:1px solid $purple;
+        }//hover
+
+        &:active, &:focus {
+        background-color: $purple;
+        border:1px solid $purple;
+        }//active
+        
+    }//ranges li
+
+    .input-mini.active {
+    border:1px solid $purple;
+    
+    }//input-mini
+
+    td.active {
+    background-color: $purple;
+    border:0px;
+    color:$white;
+    }//td.active
+
+    td.active.end-date {
+    background-color: $purple;
+    }//td.active.end-date 
+    
+    .prev.available,
+    .next.available {
+        &:hover {
+        color:$purple;
+        }//hover
+    }//prev.available, next.availabl
+    
+}//daterangepicker
+
+////////////////////////////////// Theme Setting Live Editor
+#button-settings {
+background-color: $purple;
+}//button-settings
+
+#button-settings.active {
+background-color: $darken-purple;
+}//button-settings active
+
+#theme-settings {
+background-color: $purple;
+
+    .header {
+    background-color: $darken-purple;
+    }//header
+
+}//theme-settings

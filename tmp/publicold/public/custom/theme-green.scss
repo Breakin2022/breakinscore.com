@@ -1,0 +1,577 @@
+@import "custom-variables.scss";
+
+////////////////////////////// Header Panel
+#header-panel {
+
+    ////////////////////////////// Navbar
+    .navbar {
+    background-color: $green;   
+    }//navbar
+
+    ////////////////////////////// Navbar Header
+    #navbar-header {
+        .navbar-brand.short {
+        background-color: $darken-green;
+        }//navbar-brand.short
+    }//navbar-header
+
+    ////////////////////////////// Reports
+    .reports {
+        .badge {
+        background-color: $red;
+
+        }//badge    
+    }//reports
+
+    ////////////////////////////// Message
+    .message {
+        .badge {
+        background-color: $orange;
+        }//badge
+        .all-mails {
+            &:hover {
+                i {color:$green;} //i:hover
+            }//hover    
+        }//all-mails
+    }//message
+
+    .message, .reports {
+    .item {
+        &:hover {
+            .icon, div {
+            color:$green;   
+            }//icon, div
+        }//item:hover
+    }//item 
+    }//message, reports
+
+    ////////////////////////////// Search
+    .form-control {
+    background-color: $lighten-green;
+    }//form-control
+
+    .btn-search {
+    background-color: $lighten-green;
+        i {
+        color:$white;
+        }//i
+    }//btn-search
+
+    .navbar-form input {
+        &::-webkit-input-placeholder {
+        color: $white;
+        }
+        &:-moz-placeholder { /* Firefox 18- */
+           color: $white;  
+        }
+
+        &::-moz-placeholder {  /* Firefox 19+ */
+           color: $white;  
+        }
+
+        &:-ms-input-placeholder {  
+           color: $white;  
+        }       
+    }
+    
+    ////////////////////////////// User Menu
+    .user-menu {       
+        .dropdown-menu { 
+        li {    
+            .badge {
+            background-color: $green;
+
+            }//badge
+            &:hover {
+                a, span, i {
+                color:$green;
+                }//a
+                .badge {
+                color:$white;   
+                }//badge
+            }//hover
+        }//li       
+        }//dropdown-menu
+    }//user-menu
+
+}//header-panel
+
+////////////////////////////// Navigation Panel
+#navigation-panel {
+
+    ////////////////////////////// Sidebar
+    .sidebar {
+        li {
+            a {
+                &:hover {
+                color:$green;
+                    span, i {
+                    color:$green;
+                    }//span
+                }//a:hover
+
+            }//a
+                
+            a.active {
+            color:$green;
+                span, i {
+                color:$green;       
+                }//span
+            }//a.active
+
+            }//li
+
+            li.active { 
+            color:$green;       
+                span, i {
+                color:$green;   
+                }//span, i
+            
+            > .chevron {
+                &:after {
+                color:$green;
+                }//after    
+            }//chevron
+
+            > a:focus {
+            color:$green;   
+                span, i {
+                color:$green;   
+                }//span
+            }//focus
+
+            }//li active
+
+    }//sidebar
+
+}//navigation-panel
+
+////////////////////////////// Content Panel
+#content-panel {
+.note-editor.panel {
+box-shadow: none;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;  
+}//note-editor.panel 
+    ////////////////////////////// Breadcrumb
+    .breadcrumb {
+        li {
+            a {
+                &:hover, &:focus {
+                color:$green;
+                }//a:hover, a:focus
+            }// a
+            a.active {
+            color:$green;
+            }//a.active
+        }//li
+    }//breadcrumb
+
+    ////////////////////////////// Panel
+    .panel {
+        .dropdown-menu > li > a {
+        &:hover, &:focus {color:$green;}
+        }//dropdown-menu > li > a   
+    }//panel
+
+    ////////////////////////////// stat-item
+    .stat-item {
+
+        .panel-body {   
+        background-color: $green;       
+            h2 {
+            color:$white;
+            }//h2
+        }//panel-body
+        
+        .panel-footer {
+        background-color: $darken-green;
+        h5{color:$white;}
+        }//panel-footer
+
+    }//stat-item
+
+    ////////////////////////////// vmap
+    #vmap {
+        .jqvmap-zoomin, .jqvmap-zoomout {
+            &:hover {
+            background-color: $green;
+            }//hover
+        }//jqvmap-zoomin, .jqvmap-zoomout
+    }//vmap
+
+    ////////////////////////////// btn-to-do, btn-chat, btn-table
+    .btn-to-do, .btn-chat, .btn-table {
+    background-color: $green;
+        &:hover {
+        background-color: $darken-green;
+        }//hover
+        &:focus {
+        background-color: $darken-green;
+        }//hover
+    }//btn-to-do, btn-chat, btn-table
+
+}//content-panel
+
+////////////////////////////// fontawesome-icon-list    
+.fontawesome-icon-list {
+    a {
+        &:hover, &:focus {
+        color:$green;   
+        }//hover
+    }//i, span
+}//fontawesome-icon-list
+    
+////////////////////////////// Inbox
+.inbox {
+
+    .right {
+
+    .inbox-body {
+    padding: 0px;
+
+        .btn-group {
+    
+            &:hover, &:focus {
+                a, i {
+                color:$green;
+                }//i
+            }//hover
+    
+        }//btn-group
+
+        .btn-group.open {
+            .dropdown-menu a {
+                &:hover, &:focus {
+                color:$green;   
+                }//hover
+            }//dropdown-menu a
+        }//btn-group.open   
+
+        .refresh {
+            a:hover, &:focus {
+                i {
+                color:$green;
+                }//i
+            }//hover
+        }//refresh
+
+    .inbox-pagination {
+        a.np-btn {
+            &:hover, &:focus {
+            background-color: darken($gray,3%);
+            border:1px solid darken($gray,3%);
+                i {
+                color:$green;   
+                }//i
+            }//hover
+        }//a.np-btn
+    }//inbox-pagination
+
+    }//inbox-body
+
+    }//right
+
+}//inbox
+
+////////////////////////////////// Message Detalis
+#message-detalis {
+
+    .media {
+        .text-primary {
+        color:$green;   
+        }//text-primary
+    }//media
+    
+    .reply a {
+    color:$green;   
+    }//reply a
+
+}//message-detalis
+
+////////////////////////////////// Link
+.link {
+    &:hover, &:focus, &:active {
+    color:$green;
+    }//hover, focus
+}//link
+
+////////////////////////////////// Buttons Group
+.btn-group {
+    .dropdown-menu {
+        li {
+            &:hover {
+                a {
+                color:$green;   
+                }//a
+            }//hover
+        }//li
+    }//dropdown-menu
+
+    .btn.dash-button {
+        &:focus {
+        span {color:$green;}
+        }//focus
+        &:hover, {
+        span {color:$green;}
+        }//focus
+    }//btn
+    
+}//btn-group
+
+.btn-group.open {
+    
+    .btn.dash-button {
+        span {
+        color:$green;
+        }//span
+    }//btn.dash-button
+
+}//btn-group.open
+
+////////////////////////////////// List
+.list-group-item.active {
+background-color: $lighten-green;
+border:1px solid $lighten-green;
+color:$white;
+    &:hover, &:focus {
+    background-color: $lighten-green;
+    border:1px solid $lighten-green;
+        .list-group-item-heading,
+        .list-group-item-text {
+        color:$white;   
+        }//list-group-item-text
+    }//hover
+    .list-group-item-text {
+    color:$white;   
+    }//list-group-item-text
+    .list-group-item-heading {
+    color:$white;   
+    }//list-group-item-heading
+}//active
+
+.list-group.link,
+.list-group.button {
+    .list-group-item {
+        &:hover, &:focus {
+        background-color: $green;
+            .list-group-item-heading {
+            color:$white;   
+            }//list-group-item-heading
+            .list-group-item-text {
+            color:$white;   
+            }//list-group-item-heading
+        }//hover
+    }//list-group-item
+}//list-group-item.link
+
+.list-group-item.disabled {
+background-color: $green;
+    &:hover, &:focus {
+    background-color: $darken-green;
+    }//hover
+}//list-group-item.disabled
+
+////////////////////////////////// Tabs 
+.nav-tabs {
+    > li a {
+        &:hover, &:focus {
+        background-color: $green;
+        }//a:hover
+    }//li
+    
+    li.active a {
+    background-color: $green;
+        &:focus, &:hover {
+        background-color: $green;
+        }//focus, hover
+    }//li.active
+
+}//nav-tabs
+
+.nav-stacked {
+    li {
+        a {
+            &:hover, &:focus {
+            background-color: $green;
+            }//hover
+        }//a    
+    }//li
+}//nav-stacked
+
+.nav-pills {
+    li {
+        a {
+            &:hover, &:focus {
+            background-color: $green;
+            }//hover
+        }//a    
+    }//li
+    li.active > a {
+    background-color: $green;
+        &:hover, &:focus {
+        background-color: $green;
+        }//hover
+    }//active
+}//nav-pills
+
+////////////////////////////////// Form
+.form-control {
+
+    &:focus {
+    border-color: $green;   
+    }//focus
+
+}//form-control 
+
+.input-group-addon {
+background-color: $green;
+}//input-group-addon
+
+////////////////////////////////// Tagsinput
+.bootstrap-tagsinput.focus {
+border:1px solid $green;    
+}//bootstrap-tagsinput.focus
+
+////////////////////////////////// Summernote
+.note-editor  {
+
+    .btn-default {
+    background-color: $green;
+    border:1px solid $green;
+        &:hover {
+        background-color: $darken-green;
+        border:1px solid $darken-green;
+        }//hover 
+    }//note-btn
+    
+    .btn-group {
+    margin-top: 0px;    
+    }//btn-group
+
+    .open > .btn-default.dropdown-toggle {
+    background-color: $green;
+    border:1px solid $green;    
+    }//open
+
+}//note-editor 
+
+
+////////////////////////////////// Touch Spin
+.bootstrap-touchspin {
+
+    .bootstrap-touchspin-up,
+    .bootstrap-touchspin-down {
+    background-color: $green;
+    border:1px solid $green;
+        &:hover {
+        background-color: $darken-green;
+        border:1px solid $darken-green;
+        }//hover 
+    }//bootstrap-touchspin-up, bootstrap-touchspin-down
+    
+}//bootstrap-touchspin
+
+////////////////////////////////// Table
+
+.dt-buttons {
+
+    a.dt-button {
+    
+    &:hover, &:active {
+    background-color: $darken-green;
+    }//hover, active
+
+    }//dt-button
+}//dt-buttons
+
+////////////////////////////////// Data Table
+.dataTables_wrapper {
+
+    .dataTables_filter {
+        input {
+            &:focus {
+            border:1px solid $green;
+            }//focus
+        }//input
+    }//dataTables_filter
+
+    .dataTables_paginate {
+        .paginate_button,
+        .paginate_button.disabled {
+            &:hover {
+            background-color: $green;
+            border:1px solid $green;
+            }//hover
+        }//paginate_button
+
+        .current {
+        background: $green;
+        border:1px solid $green;
+        }//current
+        
+    }//dataTables_paginate
+
+}//dataTables_wrapper
+
+////////////////////////////////// Date Range Picker Custom Style
+.daterangepicker {
+    .daterangepicker_input input:focus {
+    border:1px solid $green;    
+    }//daterangepicker_input input:focus
+
+    .ranges li {
+        
+        &:hover {
+        background-color: $green;
+        border:1px solid $green;
+        }//hover
+
+        &:active, &:focus {
+        background-color: $green;
+        border:1px solid $green;
+        }//active
+        
+    }//ranges li
+
+    .input-mini.active {
+    border:1px solid $green;
+    
+    }//input-mini
+
+    td.active {
+    background-color: $green;
+    border:0px;
+    color:$white;
+    }//td.active
+
+    td.active.end-date {
+    background-color: $green;
+    }//td.active.end-date 
+    
+    .prev.available,
+    .next.available {
+        &:hover {
+        color:$green;
+        }//hover
+    }//prev.available, next.availabl
+    
+}//daterangepicker
+
+////////////////////////////////// Theme Setting Live Editor
+#button-settings {
+background-color: $green;
+}//button-settings
+
+#button-settings.active {
+background-color: $darken-green;
+}//button-settings active
+
+#theme-settings {
+background-color: $green;
+
+    .header {
+    background-color: $darken-green;
+    }//header
+
+}//theme-settings

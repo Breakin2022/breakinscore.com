@@ -1,0 +1,57 @@
+// Custom Variables
+
+// Font Variables
+$font: 'Open Sans', 'Verdana', sans-serif;
+$small-font-size: 12px;
+$medium-font-size:16px;
+$large-font-size:20px;
+$menu-font-size:15px;
+$icon-font-size: 24px;
+$font-color1:#373a3c;
+$font-color-secondary:#757575;
+
+// Transition Variables
+$fast-transition: all 0.15s ease-in-out; 
+$average-transition: all 0.3s ease-in-out; 
+$slow-transition: all 0.5s ease-in-out; 
+
+// Scheme Color 
+$blue:#2097f3;
+$cyan:#00bfd6;
+$gray:#f0f0f0;
+$green:#4EB152;
+$dark:#212121;
+$purple:#663ab8;
+$pink:#EB1F62;
+$red:#FE5050;
+$orange:#FF9703;
+$yellow:#FDCD0C;
+$white:#ffffff;
+
+// Dark Scheme Color 
+$lighten-gray:#3f3f3f;
+$ultra-light-gray:lighten($lighten-gray,25%);
+$dark-gray:#303030;
+$darken-gray:#333;
+$ultra-dark-gray:darken($dark-gray,5%);
+// $font-color1:lighten($lighten-gray,25%); dark
+
+// Lighten Scheme Color
+$lighten-blue:#36a1f4;
+$lighten-cyan:#32cbde;
+$lighten-purple:#754dbf;
+$lighten-green:#6fbf72;
+$lighten-pink:#ef4b81;
+$lighten-red:#fe6161;
+$lighten-orange:#ffa11c;
+$lighten-yellow:#ffd93d;
+
+// Darken Scheme Color
+$darken-blue:#1c87da;
+$darken-cyan:#00abc0;
+$darken-purple:#5b34a5;
+$darken-green:#469f49;
+$darken-pink:#d31b58;
+$darken-red:#e44848;
+$darken-orange:#e58702;
+$darken-yellow:#e3b80a;

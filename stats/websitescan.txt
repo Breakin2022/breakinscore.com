@@ -1,0 +1,11 @@
+ on Sat Dec  1 11:04:19 EST 2018
+
+
+
+Scan started at -  Sat Dec 1 11:04:19 EST 2018
+/_b-scored/vendor/psy/psysh/src/Psy/Shell.php: SiteLock-PHP-SHELL-md5-byee.UNOFFICIAL FOUND
+
+----------- SCAN SUMMARY -----------
+Infected files: 1
+Time: 17491.483 sec (291 m 31 s)
+Scan ended at -  Sat Dec 1 15:55:50 EST 2018

@@ -1,0 +1,246 @@
+body {
+    background-color: black;
+}
+.login-main {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+    left: 37.5%;
+    top: 15%;
+}
+.tableBodyDiv{
+  margin-top: 20px;
+  height: 386px;
+  overflow-y: scroll;
+}
+#uniqeboxay{
+      margin-left: 34.9%;
+}
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    filter: alpha(opacity=50);
+    -webkit-transition: opacity 0.5s linear;
+}
+.redTeamColorNew{
+  background-color: transparent !important;
+}
+.blueTeamColorNew{
+  background-color: transparent !important;
+}
+
+.whiteBorderRight{
+  border-right: 1px solid white !important;
+}
+.bgTransparent{
+  background-color: transparent;
+}
+.cntrcolstyle{
+  width: 10px;
+  background-color:white;
+  color:black;
+}
+.footer {
+  position: relative;
+  margin-top: -150px; /* negative value of footer height */
+  height: 150px;
+  clear:both;
+  padding-top:20px;
+      margin-left: 39% !important;
+}
+.footer2{
+  position: absolute;
+  bottom: 350px;
+  /*left: 29%;*/
+}
+.footer3{
+  position: absolute;
+
+    /*left: 45%;*/
+        right: -107px;
+            bottom: 0px;
+}
+.fbdiv{
+      height: 60px;
+      margin-left: 4px;
+}
+.instaDiv{
+      height: 60px;
+}
+.twitterdiv{
+      height: 60px;
+}
+.sliderContainer{
+  /*right: 27%;*/
+  /*left: 27% !important;*/
+  position: absolute;
+  bottom: -52px;
+}
+.continerOfSlider{
+  margin: 0 auto;
+  margin: 0 auto;
+  text-align: center;
+  width: 600px;
+}
+.fb {
+  font-size: 23px;
+    background: #BE2A26;
+    border: 2px solid white;
+    border-radius: 26px;
+    padding-bottom: 12px;
+    padding-right: 20px;
+    padding-left: 18px;
+    padding-top: 12px;
+}
+
+.fb > span {
+    color: white;
+}
+a:hover{
+  text-decoration: none;
+}
+.insta{
+  background-color: #3D5789;
+/*margin-left: 76px;*/
+    margin-left: 2%;
+border: 2px solid white;
+border-radius: 27px;
+font-size: 23px;
+padding-left: 16px;
+padding-right: 15px;
+padding-top: 12px;
+padding-bottom: 12px;
+}
+.twiter{
+  background-color: #3D5789;
+/*margin-left: 76px;*/
+    margin-left: 2%;
+border: 2px solid white;
+border-radius: 27px;
+font-size: 23px;
+padding-left: 16px;
+padding-right: 16px;
+padding-top: 12px;
+padding-bottom: 12px;
+}
+.mycustomecountdown{
+  margin-top: 20px;
+  background: rgba(14, 14, 14, 0.75);
+    margin-left: 35%;
+    width: 306px;
+    height: 250px;
+    font-size: 100px;
+    color: white;
+    padding: 50px;
+    margin-bottom: 20px;
+}
+.parentdiv {
+    background-color: #000;
+    height: 100%;
+    width: 100%;
+}
+.bgwidth {
+    width: 100%;
+}
+.bgheight {
+    height: 100%;
+}
+#mytable{
+  color: white  !important;
+  margin-top: 2% !important;
+  width: 84% !important;
+  margin-left: 9%  !important;
+}
+#mytable > th, td{
+  font-size: 40px !important;
+}
+html, body {
+  height: 100%;
+}
+#wrap {
+  min-height: 100%;
+}
+#main {
+  overflow:auto;
+  /*padding-bottom:150px; /* this needs to be bigger than footer height*/*/
+}
+#blueTeamHeading{
+  background-color: #0152A1 !important;
+}
+#redTeamHeading{
+  background-color: #D71A21 !important;
+}
+.blueTeamColor{
+  background-color: rgba(43, 84, 164, 0.79);
+}
+.redTeamColor{
+  background-color: rgba(216, 35, 40, 0.79) !important;
+}
+.teamsLabelColor{
+  background-color: rgba(0, 0, 0, 0.58) !important;
+}
+.selectBoxStyle{
+  margin-top: 16px;
+  width: 87%;
+  margin-left: 1.6%;
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border: 1px solid rgba(215, 26, 24, 0.39);
+  border-radius: 0px;
+      height: 47px;
+      font-size: 20px;
+}
+.selectBoxStyle:focus {
+    border-color: #670d0d;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(208, 9, 9, 0.6);
+}
+
+.selectBoxStyle > option{
+  background: black;
+  color: white;
+}
+@media (min-width: 1280px) {
+  .mycustomecountdown{
+    font-size: 200px;
+    width: 400px;
+    height: 400px;
+  }
+}
+@media (max-width: 991px) {
+    #login-div {
+        width: 40%;
+        left: 32%;
+    }
+}
+@media (max-width: 768px) {
+    #login-div {
+        width: 45%;
+        left: 30%;
+    }
+}
+@media (max-width: 600px) {
+    #login-div {
+        width: 50%;
+        left: 23%;
+    }
+}
+@media (max-width: 490px) {
+    #login-div {
+        width: 63%;
+        left: 18%;
+    }
+}
+@media (max-width: 490px) {
+    #login-div {
+        width: 63%;
+        left: 18%;
+    }
+    .login-main {
+        top: 9%;
+    }
+}
