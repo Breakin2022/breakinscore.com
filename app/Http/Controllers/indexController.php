@@ -1,4 +1,4 @@
-<?php
+<?php 
 // Index Controller is being used for page that will be main page where score or comming event time will be
 // showen
 

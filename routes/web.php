@@ -12,7 +12,7 @@ Route::get('runCommand',function(){
 //   $exitCode = \Artisan::call('migrate', [
 //           '--force' => true,
 //       ]);
-//       dd($exitCode);
+//       dd($exitCode); 
 
 // $results = [];
 // $path = getcwd();
