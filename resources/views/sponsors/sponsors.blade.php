@@ -19,13 +19,9 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Title</th>
                     <th>Image</th>
+                    <th>Title</th>
                     <th>Link</th>
-                    <th style="Display:none;"></th>
-                    <th style="Display:none;"></th>
-                    <th style="Display:none;"></th>
-                    {{-- <th style="Display:none;"></th> --}}
                     <th>Action</th>
                 </tr>
             </thead>
@@ -37,17 +33,15 @@
                      @foreach($sponsors as $sponsor)
                     <tr id="del{{$sponsor->id}}">
                         <td>{{$i++}}</td>
+                        <td>
+                          <a target="_blank" href="storage/app/{{$sponsor->image}}">
+                            <img src="storage/app/{{$sponsor->image}}" alt="{{$sponsor->title}}" width="80" height="60" style="background: #eee" />
+                          </a>
+                        </td>
                         <td>{{$sponsor->title}}</td>
-                        <td> <a target="_blank" href="{{$sponsor->image}}">{{$sponsor->image}}</a> </td>
-                        <td>{{$sponsor->link}}</td>
-                        <td style="Display:none;"></td>
-                        <td style="Display:none;"></td>
-                        <td style="Display:none;"></td>
-                        {{-- <td style="Display:none;"></td> --}}
+                        <td><a target="_blank" href="{{$sponsor->link}}" >{{$sponsor->link}}</a></td>
                         <td>
                         <div class="btn-group">
-                            {{-- <button type="button" class="btn btn-xs btn-edit bg-purple hidden-xs hidden-sm"><i class="fa fa-pencil" aria-hidden="true"></i></button> --}}
-                            {{-- <button onclick="" type="button" class="btn btn-delete btn-xs bg-red hidden-xs hidden-sm"><i class="fa fa-times" aria-hidden="true"></i></button> --}}
                             <a class="btn btn-xs btn-edit bg-purple hidden-xs hidden-sm" href="{{route('sponsors.edit', $sponsor->id)}}" ><i class="fa fa-pencil" aria-hidden="true"></i></a>
                             <a class="btn btn-delete btn-xs bg-red hidden-xs hidden-sm" href="#" onclick="delsponsor({{$sponsor->id}})"><i class="fa fa-times" aria-hidden="true"></i></a>
                         </div>

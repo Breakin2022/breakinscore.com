@@ -126,13 +126,22 @@ app.controller('homeController',function($scope,homeService ,$interval,$timeout,
   window.scopePlay = $scope.play;
   $scope.sliderConfg = {
     redraw: function(){
-      window.slider1.reloadSlider();
-      window.slider2.reloadSlider();
-
+      
       $timeout(function(){
         $timeout(function(){
-          window.slider1.reloadSlider();
-          window.slider2.reloadSlider();
+          var swiper = new Swiper('.swiper-container', {
+            autoplay: {
+              delay: 3000,
+            },
+            slidesPerView: 3,
+            spaceBetween: 10,
+            reverseDirection: true,
+            disableOnInteraction: false,
+            pagination: {
+              el: '.swiper-pagination',
+              clickable: true,
+            },
+          });
         },100);
       },100);
     }

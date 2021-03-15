@@ -1,4 +1,4 @@
-<?php 
+<?php
 // Index Controller is being used for page that will be main page where score or comming event time will be
 // showen
 
@@ -15,14 +15,77 @@ use App\Helpers\Helpers as Helper;
 
 class indexController extends Controller
 {
+
+  public function privacy()
+  {
+    $title = 'Privacy Policy';
+    $privacy_policy   = DB::table('options')->where('option_name', 'privacy_policy')->value('option_value');
+    $website_title = DB::table('options')->where('option_name', 'website_title')->value('option_value');
+    $website_logo     = DB::table('options')->where('option_name', 'website_logo')->value('option_value');
+    return view('reports.privacy', compact( 'title', 'privacy_policy','website_title', 'website_logo'));
+  }
+
     public function design(){
+      
+      $website_title             = DB::table('options')->where('option_name', 'website_title')->value('option_value');
+      $website_identity          = DB::table('options')->where('option_name', 'website_identity')->value('option_value');
+      $scoreboard_layout         = DB::table('options')->where('option_name', 'scoreboard_layout')->value('option_value');
+      $website_background_status = DB::table('options')->where('option_name', 'website_background_status')->value('option_value');
+      $sponsors_slider           = DB::table('options')->where('option_name', 'sponsors_slider')->value('option_value');
+      $sponsors_slider_width     = DB::table('options')->where('option_name', 'sponsors_slider_width')->value('option_value');
+      $website_logo              = DB::table('options')->where('option_name', 'website_logo')->value('option_value');
+      $website_background        = DB::table('options')->where('option_name', 'website_background')->value('option_value');
+      $vs_scoreboard             = DB::table('options')->where('option_name', 'vs_scoreboard')->value('option_value');
+
       $dateCurrent = new DateTime();
       $dateOld = new DateTime();
       date_sub($dateOld, date_interval_create_from_date_string("1 days"));
       $dateCurrent = date_format($dateCurrent, "Y-m-d");
       $dateOld = date_format($dateOld, "Y-m-d");
 
+      $competitions = DB::table('competitionVenues')->whereDate('start_date', '=', $dateOld)->orWhere('start_date', '=', $dateCurrent)->orderBy('id','desc')->get();
 
+      $competitions = $competitions->map(function($competition){
+        $cid = $competition->id;
+        $countCriteras = DB::table('competition_criterias')->where('competitionid', $competition->id)->join('criterias', 'criterias.id' ,'=', 'competition_criterias.criteriaid')->count();
+        $competition->teamsInRoundOne = DB::table('matches')->where('competitionId','=',$cid)->where('roundNo','=','1')->count();
+        $competition->criteriasCount = $countCriteras;
+
+        return $competition;
+      });
+
+      $sponsors = DB::table('sponsors')->get();
+      return view('indexPage.design', compact( 
+        'competitions',
+        'sponsors',
+        'website_title',
+        'website_identity',
+        'scoreboard_layout',
+        'website_background_status',
+        'sponsors_slider',
+        'sponsors_slider_width',
+        'website_logo',
+        'website_background',
+        'vs_scoreboard'
+    ));
+    }
+    
+    public function scoreboard(){
+      
+      $website_title             = DB::table('options')->where('option_name', 'website_title')->value('option_value');
+      $website_identity          = DB::table('options')->where('option_name', 'website_identity')->value('option_value');
+      $scoreboard_layout         = DB::table('options')->where('option_name', 'scoreboard_layout')->value('option_value');
+      $website_background_status = DB::table('options')->where('option_name', 'website_background_status')->value('option_value');
+      $sponsors_slider           = DB::table('options')->where('option_name', 'sponsors_slider')->value('option_value');
+      $sponsors_slider_width     = DB::table('options')->where('option_name', 'sponsors_slider_width')->value('option_value');
+      $website_logo              = DB::table('options')->where('option_name', 'website_logo')->value('option_value');
+      $website_background        = DB::table('options')->where('option_name', 'website_background')->value('option_value');
+
+      $dateCurrent = new DateTime();
+      $dateOld = new DateTime();
+      date_sub($dateOld, date_interval_create_from_date_string("1 days"));
+      $dateCurrent = date_format($dateCurrent, "Y-m-d");
+      $dateOld = date_format($dateOld, "Y-m-d");
 
       $competitions = DB::table('competitionVenues')->whereDate('start_date', '=', $dateOld)->orWhere('start_date', '=', $dateCurrent)->orderBy('id','desc')->get();
 
@@ -38,8 +101,20 @@ class indexController extends Controller
       // criteriasCount
 
       $sponsors = DB::table('sponsors')->get();
-      return view('indexPage.design',compact('competitions','sponsors'));
+      return view('indexPage.scoreboard', compact( 
+        'competitions',
+        'sponsors',
+        'website_title',
+        'website_identity',
+        'scoreboard_layout',
+        'website_background_status',
+        'sponsors_slider',
+        'sponsors_slider_width',
+        'website_logo',
+        'website_background'
+    ));
     }
+
     public function stopMatchStartTimer(Request $request){
       $competitionId = $request->competitionId;
       $matchId       = $request->matchId;
@@ -122,14 +197,19 @@ class indexController extends Controller
     }
 
     public function teamsRanking($ageGroup = null){
+      $title = 'Teams Ranking';      
+    $website_title = DB::table('options')->where('option_name', 'website_title')->value('option_value');
+    $website_logo     = DB::table('options')->where('option_name', 'website_logo')->value('option_value');
 
       $teams = Team::join('teamsRanks','teamsRanks.teamId','=','teams.id')->where('ageGroup','!=', 0)->orderBy('teamsRanks.rank','desc')->limit(200)->get();
-      return view('reports.teamRanks',compact('teams'));
+      return view('reports.teamRanks',compact( 'title', 'teams', 'website_title', 'website_logo'));
     }
     public function participantsRanking($ageGroup = null){
-
+      $title = 'Participants Ranking';
+      $website_title = DB::table('options')->where('option_name', 'website_title')->value('option_value');
+      $website_logo     = DB::table('options')->where('option_name', 'website_logo')->value('option_value');
       $participants = Participant::join('playersRank','playersRank.participantId','=','participant.id')->where('ageGroup','!=',0)->orderBy('playersRank.rank','desc')->limit(200)->get();
-      return view('reports.playerRanks',compact('participants'));
+      return view('reports.playerRanks',compact( 'title', 'participants', 'website_title', 'website_logo'));
     }
     public function index2()
     {
@@ -167,8 +247,8 @@ class indexController extends Controller
               'blueTeamScore',
               null
           );
-                $redTeamId = $match->redtid;
-                $blueTeamId = $match->bluetid;
+                $redTeamId = $match->secondTeam;
+                $blueTeamId = $match->firstTeam;
                 $redTeamTitle = helper::getTeamTitleById($redTeamId);
                 $blueTeamTitle = helper::getTeamTitleById($blueTeamId);
                 $matcesCollection[$matchesI]['redTeamTitle'] = $redTeamTitle;
@@ -681,23 +761,6 @@ class indexController extends Controller
   </td>
 </tr>
 </tbody>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <?php
     }
 }

@@ -17,6 +17,12 @@
   margin-top: 0px;
   margin-right: 13px;
 }
+.w-100{
+    width:100%
+}
+.mt-5{
+    margin-top: 5%;
+}
 </style>
   <!-- //////////////////////////////////////////////////// Content-Panel div -->
   <div id="content-panel">
@@ -44,6 +50,20 @@
                   </div> <!-- /canvas-holder -->
                   </div> <!-- /panel-body -->
               </div> <!-- /panel-->
+            <div class="row mt-5">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                    <a href="{{ url('scoreboard') }}" target="_blank" class="btn btn-md bg-purple w-100"><span>Scoreboard <i class="fa fa-external-link" aria-hidden="true"></i></span></a>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                    <a href="{{ url('participantsRanking') }}" target="_blank" class="btn btn-md bg-purple w-100"><span>Participant Ranking <i class="fa fa-external-link" aria-hidden="true"></i></span></a>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                    <a href="{{ url('teamsRanking') }}" target="_blank" class="btn btn-md bg-purple w-100"><span>Teams Ranking <i class="fa fa-external-link" aria-hidden="true"></i></span></a>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                    <a href="{{ url('privacy') }}" target="_blank" class="btn btn-md bg-purple w-100"><span>Privacy <i class="fa fa-external-link" aria-hidden="true"></i></span></a>
+                </div>
+            </div>
           </div> <!-- /col -->
 
           <!-- //////////////////////////////////////////////////// Statistics -->
