@@ -24,7 +24,7 @@ use Auth;
 use Response;
 
 use App\Helpers\Helpers as Helper;
-
+ 
 class ReportController extends Controller
 {
     public function __construct()
