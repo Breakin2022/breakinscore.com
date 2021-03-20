@@ -94,9 +94,8 @@
     <li><a href="{{route("api-getCompetition")}}" ><i class="fa fa-building-o" aria-hidden="true"></i> <span class="link-hide">Live Competition </span></a></li>
     <li><a href="{{route("sponsors.index")}}" ><i class="fa  fa-users" aria-hidden="true"></i> <span class="link-hide"> Sponsors </span></a></li>
     <li><a href="{{route("criteria.index")}}" ><i class="fa  fa-users" aria-hidden="true"></i> <span class="link-hide"> Criteria </span></a></li>
-
-    <li><a href="#" ><i class="fa fa-star-half-o" aria-hidden="true"></i> <span class="link-hide"> Participants Ranking </span></a></li>
-    <li><a href="#" ><i class="fa fa-star-half-o" aria-hidden="true"></i> <span class="link-hide"> Teams Ranking </span></a></li>
+    <li><a href="{{route("reports")}}" ><i class="fa fa-star-half-o" aria-hidden="true"></i> <span class="link-hide"> Reports </span></a></li>
+    <li><hr></li>
     <li><a href="{{route("options.index")}}" ><i class="fa fa-cog" aria-hidden="true"></i> <span class="link-hide"> Options </span></a></li>
     </ul>
     </div>

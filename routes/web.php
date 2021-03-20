@@ -36,6 +36,9 @@ Route::post('/stopMatchStartTimer','indexController@stopMatchStartTimer')->name(
 Route::get('/competitionscores/{id}','competitionVenue@competitionScores')->name('competitionScores');
 
 Route::get('/report/{id}','ReportController@show')->name('report');
+Route::get('/reports','ReportController@reports')->name('reports');
+Route::post('/reports-teams', "ReportController@reports_teams")->name('getReportsTeams');
+Route::post('/reports-match', "ReportController@reports_match")->name('getReportsMatch');
 
 Route::get('teamsRanking/{ageGroup?}','indexController@teamsRanking')->name('teamsRanking');
 Route::get('participantsRanking/{ageGroup?}','indexController@participantsRanking')->name('participantsRanking');

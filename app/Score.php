@@ -12,4 +12,7 @@ class Score extends Model
     public function judge(){
       return $this->hasOne('App\Judge','id','judgeId');
     }
+    public function participant(){
+      return $this->hasOne('App\Participant','id','participantId');
+    }
 }
