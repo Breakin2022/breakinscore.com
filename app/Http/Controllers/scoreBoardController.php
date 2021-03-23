@@ -22,12 +22,6 @@ use App\Helpers\Helpers as Helper;
 
 class scoreBoardController extends Controller
 {
-
-
-    // public function testingnow(){
-    //   $result = helper::getTeamsWithIdAndRoundForFourTeams(13);
-    //   dd($result);
-    // }
     public function getScoreOf8teams(Request $request)
     {
       $competition = (object)$request->competition ;
@@ -80,8 +74,6 @@ class scoreBoardController extends Controller
         $matches = helper::getTeamsWithIdAndRoundForTwoTeams($competitionId );
       }
       $matches->notifications = helper::notificationData($competitionId);
-
-
       $notifications = helper::notificationData($competitionId);
       return [
         'matches'=>$matches,
@@ -89,38 +81,18 @@ class scoreBoardController extends Controller
         'notifications'=> $notifications
       ];
 
-
-
     }
     public function getdisplay16ViewUpdate(Request $request){
-      // $competition = (object)$request->competition ;
-      //
-      // $competitionId = $competition->id;
-      // $topChoice = $competition->topTeamChoice;
-
-      $competitionId =  14;
-      $topChoice = 32;
-
+      $competition = (object)$request->competition ;
+      $competitionId = $competition->id;
+      $topChoice = $competition->topTeamChoice;
       $competitionLatestUpdated = DB::Table('competitionVenues')->where('id','=',$competitionId)->first();
-
-
-
       if ($topChoice == 32) {
-
-
         $matchesOf3rdRound = Helper::getMatchesAndThereScoreWithName($competitionId,3);
-
-
         return [
           'matchesOf3rdRound'=>$matchesOf3rdRound
         ];
-
-
-
       }
-
-      // dd($request->all());
-      // dd($request->competition);
     }
 
     public function getTeamScore(Request $request){
@@ -140,25 +112,25 @@ class scoreBoardController extends Controller
 
       $match->map(function($match)use($competitionId,$matchId){
         $t1Score = Score::where('competitionId','=',$competitionId)->where('teamId','=',$match->t1id)->where('matchId','=',$matchId)->get();
-
         $t1Score->map(function($score){
-          $score->score = $score->criterias->sum('score');
+          $score->score = $score->criterias->sum('score')/$score->criterias->count();
           return $score;
         });
-        $match->t1score = $t1Score->sum('score');
+        $match->t1score = round( $t1Score->sum('score')/$t1Score->count() , 2);
+
         $t2Score = Score::where('competitionId','=',$competitionId)->where('teamId','=',$match->t2id)->where('matchId','=',$matchId)->get();
         $t2Score = $t2Score->map(function($score){
-          $score->score = $score->criterias->sum('score');
+          $score->score = $score->criterias->sum('score')/$score->criterias->count();
           return $score;
         });
-        $match->t2score = $t2Score->sum('score');
+        $match->t2score = round( $t2Score->sum('score')/$t2Score->count() , 2);
         return $match;
       });
 
       return $match;
     }
 
-    
+
     public function getStopTimerStatus(Request $request){
       $competition = (object)$request->competition[0];
       $competitionId = $competition->competitionId;
@@ -195,7 +167,6 @@ class scoreBoardController extends Controller
       $competition = (object)$request->competition  ;
       $roundwanted = $request->roundwanted;
 
-
       $competitions = DB::table('competitionVenues')->where('id','=',$competition->id )->get();
       $competitions = $competitions->map(function($competition)use($roundwanted){
         $competition->needTable = true;
@@ -203,14 +174,8 @@ class scoreBoardController extends Controller
         $competition->matches = Helper::getMatchesScoreForSpecifcRound($competition,$roundwanted);
         $competition->needTable = true;
 
-
-
         return $competition;
       });
-
-
-
-
 
       return $competitions;
     }
@@ -222,7 +187,6 @@ class scoreBoardController extends Controller
       $dateOld = date_format($dateOld, "Y-m-d");
 
       $competitions = DB::table('competitionVenues')->whereDate('start_date', '=', $dateOld)->orWhere('start_date', '=', $dateCurrent)->orderBy('id','desc')->get();
-
 
       $competitions = $competitions->map(function($competition){
         $competition->matches = Helper::getMatchesScore($competition);
