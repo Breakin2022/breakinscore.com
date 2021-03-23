@@ -63,6 +63,28 @@ class ReportController extends Controller
         return (json_encode(array('status' => $status, 'data' => $data)));
     }
 
+    protected function scores_list($scores){
+        $scores_html = '';
+        foreach($scores as $scoresRow){
+            $scores_html .= '<td id="scoresRow_'.$scoresRow->id.'" ScoreId="'.$scoresRow->scoreId.'" criteriaId="'.$scoresRow->criteriaId.'"><a class="btn btn-primary btn-xs edit-score"  data-toggle="modal" data-target="#scoreModal">'.$scoresRow->score.'</a></td>';
+        } 
+        return $scores_html;
+    }
+
+    public function update_score(Request $request){
+        $id    = $request->id;
+        $score = $request->score;
+        $update = CriteriaScore::find($id);
+        if($update != null && $score){
+           $update->score = $score;
+           $update->save();
+           return (json_encode(array('status' => 'suucess', 'data' => 'Score updated successfully.')));
+        }else{
+            return (json_encode(array('status' => 'error', 'data' => 'Score ID doen\'t exists!' )));
+        }
+        return (json_encode(array('status' => 'error', 'data' => 'Damm...')));
+    }
+
     public function reports_match(Request $request){
         $match_id = $request->match_id;
         $match    = Match::find($match_id);
@@ -89,106 +111,112 @@ class ReportController extends Controller
             $obj->team2Member1Id        = $match->teamTwo->members[0]->pid;
             $obj->team2Member1Name      = Participant::find($obj->team2Member1Id)->name;
             /** 'Get Table::competitionCriteria  using competitionId */
-            $obj->criterias        = $competition->criterias;
+            $obj->criterias             = $competition->criterias;
             /** Get Table::Score participant's scores Data using TeamMemeber ID | participantId where  competitionId = Current match competitionId AND matchId = current matchId*/
             $p1Data = Score::where('participantId', $obj->team1Member1Id)->where('competitionId', $obj->competitionId)->where('matchId', $obj->matchId)->get();
 
             $p2Data = Score::where('participantId', $obj->team2Member1Id)->where('competitionId', $obj->competitionId)->where('matchId', $obj->matchId)->get();
 
+            $p1DataScores = array();
             foreach($p1Data as $score){
                 $judge = Judge::find($score->judgeId);
                 if($judge != null ){
-                    $score->judgeName   = $judge->name;
+                    $judgeName   = $judge->name;
                 }else{
-                    $score->judgeName   = 'Judge '.$score->judgeId;
+                    $judgeName   = 'Judge '.$score->judgeId;
                 }
                 $scores = CriteriaScore::where('scoreId', $score->id)->get();
-                $score->scores = $scores;
+                if(!array_key_exists($score->matchRoundNumber,$p1DataScores)){
+                    $p1DataScores[$score->matchRoundNumber] = array();
+                }
+                array_push($p1DataScores[$score->matchRoundNumber],array('Round' => $score->matchRoundNumber, 'judgeName'=>$judgeName, 'judgeId' => $score->judgeId, 'scores'=>$scores)); 
             }
 
+            $p2DataScores = array();
             foreach($p2Data as $score){
                 $judge = Judge::find($score->judgeId);
                 if($judge != null ){
-                    $score->judgeName   = $judge->name;
+                    $judgeName   = $judge->name;
                 }else{
-                    $score->judgeName   = 'Judge '.$score->judgeId;
+                    $judgeName   = 'Judge '.$score->judgeId;
                 }
                 $scores = CriteriaScore::where('scoreId', $score->id)->get();
-                $score->scores = $scores;
+                if(!array_key_exists($score->matchRoundNumber,$p2DataScores)){
+                    $p2DataScores[$score->matchRoundNumber] = array();
+                }
+                array_push($p2DataScores[$score->matchRoundNumber],array('Round' => $score->matchRoundNumber, 'judgeName'=>$judgeName, 'judgeId' => $score->judgeId, 'scores'=>$scores)); 
             }
-            
+             
             $criteria_html = ''; 
             foreach ($obj->criterias as $criteria) { 
-                $criteria_html .= '<th criteriaid="criteria_'.$criteria->criteriaid.'" competitionid="competition_'.$criteria->criteria->competitionid.'">'.$criteria->criteria->title.'</th>';
+                $criteriaTitle = "";
+                if($criteria->criteria != null){
+                   $criteriaTitle =  $criteria->criteria->title;
+                }else{
+                    $criteriaTitle =  'Criteria ID: '.$criteria->criteriaid;
+                }
+                $criteria_html .= '<th criteriaid="criteria_'.$criteria->criteriaid.'" competitionid="competition_'.$criteria->competitionid.'">'.$criteriaTitle.'</th>';
             }
             ob_start();
         ?>
         <div class="row panel-body"  id="scores_data">
             <div class="col-md-12">
-                <h2 class="text-center">Competition: <?= $obj->competitionTitle; ?> (1 vs. 1)</h2>
+                <h2 class="text-center">Competition: <strong><?= $obj->competitionTitle; ?></strong> <em>(1 vs. 1)</em></h2>
                 <br>
-                <h4>Team: <?= $obj->team1Name ?> vs. <?= $obj->team2Name ?></h4>
+                <h4>Team: <font color="#0152a1"><?= $obj->team1Name ?></font> vs. <font color="#D71A21"><?= $obj->team2Name ?></font></h4>
                 <br>
             </div>
               <div class="col-md-6">
-                <h5>Participant: <strong><?=  $obj->team1Member1Name ?></strong></h5>
+                <h5>Participant: <strong><font color="#0152a1"><?=  $obj->team1Member1Name ?></font></strong></h5>
                 <hr>
                 <?php 
-                    $counter = 0;
-                    foreach($p1Data as $p1DataRow){
+                    foreach($p1DataScores as $round => $p1DataScore){
                 ?>
-                <h5>Match Round <strong><?= $p1DataRow->matchRoundNumber ?></strong>: </h5>
+                <h5>Match Round <strong><?= $round ?></strong>: </h5>
                 <br>
-                <table class="table table-hover table-striped table-sm" scoreid="<?= $p1DataRow->id ?>">
+                <table class="table table-hover table-striped table-sm">
                   <tbody>
                     <tr>
-                      <th>Judges(s)</th>
+                      <th>Judge</th>
                       <?= $criteria_html ?>
                     </tr>
-                    <tr judgeid="<?= $p1DataRow->judgeId ?>">
-                      <th><?= $p1DataRow->judgeName ?> </th>
-                      <?php 
-                        foreach($p1DataRow->scores as $scoresRow){
-                          echo '<td criteriaScoreId="'.$scoresRow->id.'" criteriaId="'.$scoresRow->criteriaId.'"> '.$scoresRow->score.' </td>';
-                        } 
-                      ?>
-                    </tr>
+                    <?php foreach($p1DataScore as $p1DataRow){ ?>
+                        <tr judgeid="<?= $p1DataRow['judgeId'] ?>">
+                            <th><?= $p1DataRow['judgeName'] ?> </th>
+                            <?= self::scores_list($p1DataRow['scores']); ?>
+                        </tr>
+                    <?php } ?>
                   </tbody>
                 </table>
                 <hr>
                 <?php 
-                    $counter++;
                     }  
                 ?>
               </div>
               <div class="col-md-6">
-                <h5>Participant: <strong><?=  $obj->team2Member1Name ?></strong></h5>
+                <h5>Participant: <strong><font color="#D71A21"><?=  $obj->team2Member1Name ?></font></strong></h5>
                 <hr>
                 <?php 
-                    $counter = 0;
-                    foreach($p2Data as $p2DataRow){
+                    foreach($p2DataScores  as $round => $p2DataScore){
                 ?>
-                <h5>Match Round <strong><?= $p2DataRow->matchRoundNumber ?></strong>: </h5>
+                <h5>Match Round <strong><?= $round ?></strong>: </h5>
                 <br>
-                <table class="table table-hover table-striped table-sm" scoreid="<?= $p2DataRow->id ?>">
+                <table class="table table-hover table-striped table-sm">
                   <tbody>
                     <tr>
-                      <th>Judges(s)</th>
+                      <th>Judge</th>
                       <?= $criteria_html ?>
                     </tr>
-                    <tr judgeid="<?= $p2DataRow->judgeId ?>">
-                      <th><?= $p2DataRow->judgeName ?> </th>
-                      <?php 
-                        foreach($p2DataRow->scores as $scoresRow){
-                          echo '<td criteriaScoreId="'.$scoresRow->id.'" criteriaId="'.$scoresRow->criteriaId.'"> '.$scoresRow->score.' </td>';
-                        } 
-                      ?>
-                    </tr>
+                    <?php foreach($p2DataScore as $p2DataRow){ ?>
+                        <tr judgeid="<?= $p2DataRow['judgeId'] ?>">
+                            <th><?= $p2DataRow['judgeName'] ?> </th>
+                            <?= self::scores_list($p2DataRow['scores']); ?>
+                        </tr>
+                    <?php } ?>
                   </tbody>
                 </table>
                 <hr>
                 <?php 
-                    $counter++;
                     }  
                 ?>
               </div>
@@ -214,184 +242,192 @@ class ReportController extends Controller
             $p3Data = Score::where('participantId', $obj->team2Member1Id)->where('competitionId', $obj->competitionId)->where('matchId', $obj->matchId)->get();
             $p4Data = Score::where('participantId', $obj->team2Member2Id)->where('competitionId', $obj->competitionId)->where('matchId', $obj->matchId)->get();
 
+            $p1DataScores = array();
             foreach($p1Data as $score){
                 $judge = Judge::find($score->judgeId);
-                if( $judge != null ){
-                    $score->judgeName   = $judge->name;
+                if($judge != null ){
+                    $judgeName   = $judge->name;
                 }else{
-                    $score->judgeName   = 'Judge '.$score->judgeId;
+                    $judgeName   = 'Judge '.$score->judgeId;
                 }
                 $scores = CriteriaScore::where('scoreId', $score->id)->get();
-                $score->scores = $scores;
+                if(!array_key_exists($score->matchRoundNumber,$p1DataScores)){
+                    $p1DataScores[$score->matchRoundNumber] = array();
+                }
+                array_push($p1DataScores[$score->matchRoundNumber],array('Round' => $score->matchRoundNumber, 'judgeName'=>$judgeName, 'judgeId' => $score->judgeId, 'scores'=>$scores)); 
             }
 
+            $p2DataScores = array();
             foreach($p2Data as $score){
                 $judge = Judge::find($score->judgeId);
                 if($judge != null ){
-                    $score->judgeName   = $judge->name;
+                    $judgeName   = $judge->name;
                 }else{
-                    $score->judgeName   = 'Judge '.$score->judgeId;
+                    $judgeName   = 'Judge '.$score->judgeId;
                 }
                 $scores = CriteriaScore::where('scoreId', $score->id)->get();
-                $score->scores = $scores;
+                if(!array_key_exists($score->matchRoundNumber,$p2DataScores)){
+                    $p2DataScores[$score->matchRoundNumber] = array();
+                }
+                array_push($p2DataScores[$score->matchRoundNumber],array('Round' => $score->matchRoundNumber, 'judgeName'=>$judgeName, 'judgeId' => $score->judgeId, 'scores'=>$scores)); 
             }
             
+            
+
+            $p3DataScores = array();
             foreach($p3Data as $score){
                 $judge = Judge::find($score->judgeId);
                 if($judge != null ){
-                    $score->judgeName   = $judge->name;
+                    $judgeName   = $judge->name;
                 }else{
-                    $score->judgeName   = 'Judge '.$score->judgeId;
+                    $judgeName   = 'Judge '.$score->judgeId;
                 }
                 $scores = CriteriaScore::where('scoreId', $score->id)->get();
-                $score->scores = $scores;
+                if(!array_key_exists($score->matchRoundNumber,$p3DataScores)){
+                    $p3DataScores[$score->matchRoundNumber] = array();
+                }
+                array_push($p3DataScores[$score->matchRoundNumber],array('Round' => $score->matchRoundNumber, 'judgeName'=>$judgeName, 'judgeId' => $score->judgeId, 'scores'=>$scores)); 
             }
-            
+
+            $p4DataScores = array();
             foreach($p4Data as $score){
                 $judge = Judge::find($score->judgeId);
                 if($judge != null ){
-                    $score->judgeName   = $judge->name;
+                    $judgeName   = $judge->name;
                 }else{
-                    $score->judgeName   = 'Judge '.$score->judgeId;
+                    $judgeName   = 'Judge '.$score->judgeId;
                 }
                 $scores = CriteriaScore::where('scoreId', $score->id)->get();
-                $score->scores = $scores;
+                if(!array_key_exists($score->matchRoundNumber,$p4DataScores)){
+                    $p4DataScores[$score->matchRoundNumber] = array();
+                }
+                array_push($p4DataScores[$score->matchRoundNumber],array('Round' => $score->matchRoundNumber, 'judgeName'=>$judgeName, 'judgeId' => $score->judgeId, 'scores'=>$scores)); 
             }
 
             $criteria_html = ''; 
             foreach ($obj->criterias as $criteria) { 
-                $criteria_html .= '<th criteriaid="criteria_'.$criteria->criteriaid.'" competitionid="competition_'.$criteria->criteria->competitionid.'">'.$criteria->criteria->title.'</th>';
+                $criteriaTitle = "";
+                if($criteria->criteria != null){
+                   $criteriaTitle =  $criteria->criteria->title;
+                }else{
+                    $criteriaTitle =  'Criteria ID: '.$criteria->criteriaid;
+                }
+                $criteria_html .= '<th criteriaid="criteria_'.$criteria->criteriaid.'" competitionid="competition_'.$criteria->competitionid.'">'.$criteriaTitle.'</th>';
             }
             ob_start();
             ?>
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="text-center">Competition: <?= $obj->competitionTitle; ?> (1 vs. 1)</h2>
+                    <h2 class="text-center">Competition: <strong><?= $obj->competitionTitle; ?></strong> <em>(2 vs. 2)</em></h2>
                     <br>
-                    <h4>Team: <?= $obj->team1Name ?> vs. <?= $obj->team2Name ?></h4>
+                    <h4>Team: <font color="#0152a1"><?= $obj->team1Name ?></font> vs. <font color="#D71A21"><?= $obj->team2Name ?></font></h4>
                     <br>
                 </div>
             <div>
             <div class="row">
                 <div class="col-md-6">
-                    <h5>Participant: <strong><?=  $obj->team1Member1Name ?></strong></h5>
+                    <h5>Participant: <strong><font color="#0152a1"><?=  $obj->team1Member1Name ?></font></strong></h5>
                     <hr>
                     <?php 
-                        $counter = 0;
-                        foreach($p1Data as $p1DataRow){
+                        foreach($p1DataScores as $round => $p1DataScore){
                     ?>
-                    <h5>Match Round <strong><?= $p1DataRow->matchRoundNumber ?></strong>: </h5>
+                    <h5>Match Round <strong><?= $round ?></strong>: </h5>
                     <br>
-                    <table class="table table-hover table-striped table-sm" scoreid="<?= $p1DataRow->id ?>">
-                      <tbody>
+                    <table class="table table-hover table-striped table-sm">
+                    <tbody>
                         <tr>
-                          <th>Judges(s)</th>
-                          <?= $criteria_html ?>
+                        <th>Judge</th>
+                        <?= $criteria_html ?>
                         </tr>
-                        <tr judgeid="<?= $p1DataRow->judgeId ?>">
-                          <th><?= $p1DataRow->judgeName ?> </th>
-                          <?php 
-                            foreach($p1DataRow->scores as $scoresRow){
-                              echo '<td criteriaScoreId="'.$scoresRow->id.'" criteriaId="'.$scoresRow->criteriaId.'"> '.$scoresRow->score.' </td>';
-                            } 
-                          ?>
-                        </tr>
-                      </tbody>
+                        <?php foreach($p1DataScore as $p1DataRow){ ?>
+                            <tr judgeid="<?= $p1DataRow['judgeId'] ?>">
+                                <th><?= $p1DataRow['judgeName'] ?> </th>
+                                <?= self::scores_list($p1DataRow['scores']); ?>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
                     </table>
                     <hr>
                     <?php 
-                        $counter++;
                         }  
                     ?>
                     <br>
-                    <h5>Participant: <strong><?=  $obj->team1Member2Name ?></strong></h5>
+                    <h5>Participant: <strong><font color="#0152a1"><?=  $obj->team1Member2Name ?></font></strong></h5>
                     <hr>
                     <?php 
-                        $counter = 0;
-                        foreach($p2Data as $p2DataRow){
+                    foreach($p2DataScores  as $round => $p2DataScore){
                     ?>
-                    <h5>Match Round <strong><?= $p2DataRow->matchRoundNumber ?></strong>: </h5>
+                    <h5>Match Round <strong><?= $round ?></strong>: </h5>
                     <br>
-                    <table class="table table-hover table-striped table-sm" scoreid="<?= $p2DataRow->id ?>">
-                      <tbody>
+                    <table class="table table-hover table-striped table-sm">
+                    <tbody>
                         <tr>
-                          <th>Judges(s)</th>
-                          <?= $criteria_html ?>
+                        <th>Judge</th>
+                        <?= $criteria_html ?>
                         </tr>
-                        <tr judgeid="<?= $p2DataRow->judgeId ?>">
-                          <th><?= $p2DataRow->judgeName ?> </th>
-                          <?php 
-                            foreach($p2DataRow->scores as $scoresRow){
-                              echo '<td criteriaScoreId="'.$scoresRow->id.'" criteriaId="'.$scoresRow->criteriaId.'"> '.$scoresRow->score.' </td>';
-                            } 
-                          ?>
-                        </tr>
-                      </tbody>
+                        <?php foreach($p2DataScore as $p2DataRow){ ?>
+                            <tr judgeid="<?= $p2DataRow['judgeId'] ?>">
+                                <th><?= $p2DataRow['judgeName'] ?> </th>
+                                <?= self::scores_list($p2DataRow['scores']); ?>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
                     </table>
                     <hr>
                     <?php 
-                        $counter++;
                         }  
                     ?>
                 </div>
                 <div class="col-md-6">
-                    <h5>Participant: <strong><?=  $obj->team2Member1Name ?></strong></h5>
+                    <h5>Participant: <strong><font color="#D71A21"><?=  $obj->team2Member1Name ?></font></strong></h5>
                     <hr>
                     <?php 
-                        $counter = 0;
-                        foreach($p3Data as $p3DataRow){
+                        foreach($p3DataScores as $round => $p3DataScore){
                     ?>
-                    <h5>Match Round <strong><?= $p3DataRow->matchRoundNumber ?></strong>: </h5>
+                    <h5>Match Round <strong><?= $round ?></strong>: </h5>
                     <br>
-                    <table class="table table-hover table-striped table-sm" scoreid="<?= $p3DataRow->id ?>">
+                    <table class="table table-hover table-striped table-sm">
                     <tbody>
                         <tr>
-                        <th>Judges(s)</th>
+                        <th>Judge</th>
                         <?= $criteria_html ?>
                         </tr>
-                        <tr judgeid="<?= $p3DataRow->judgeId ?>">
-                        <th><?= $p3DataRow->judgeName ?> </th>
-                        <?php 
-                            foreach($p3DataRow->scores as $scoresRow){
-                            echo '<td criteriaScoreId="'.$scoresRow->id.'" criteriaId="'.$scoresRow->criteriaId.'"> '.$scoresRow->score.' </td>';
-                            } 
-                        ?>
-                        </tr>
+                        <?php foreach($p3DataScore as $p3DataRow){ ?>
+                            <tr judgeid="<?= $p3DataRow['judgeId'] ?>">
+                                <th><?= $p3DataRow['judgeName'] ?> </th>
+                                <?= self::scores_list($p3DataRow['scores']); ?>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                     </table>
                     <hr>
                     <?php 
-                        $counter++;
                         }  
                     ?>
                     <br>
-                    <h5>Participant: <strong><?=  $obj->team2Member2Name ?></strong></h5>
+                    <h5>Participant: <strong><font color="#D71A21"><?=  $obj->team2Member2Name ?></font></strong></h5>
                     <hr>
                     <?php 
-                        $counter = 0;
-                        foreach($p4Data as $p4DataRow){
+                        foreach($p4DataScores as $round => $p4DataScore){
                     ?>
-                    <h5>Match Round <strong><?= $p4DataRow->matchRoundNumber ?></strong>: </h5>
+                    <h5>Match Round <strong><?= $round ?></strong>: </h5>
                     <br>
-                    <table class="table table-hover table-striped table-sm" scoreid="<?= $p4DataRow->id ?>">
+                    <table class="table table-hover table-striped table-sm">
                     <tbody>
                         <tr>
-                        <th>Judges(s)</th>
+                        <th>Judge</th>
                         <?= $criteria_html ?>
                         </tr>
-                        <tr judgeid="<?= $p4DataRow->judgeId ?>">
-                        <th><?= $p4DataRow->judgeName ?> </th>
-                        <?php 
-                            foreach($p4DataRow->scores as $scoresRow){
-                            echo '<td criteriaScoreId="'.$scoresRow->id.'" criteriaId="'.$scoresRow->criteriaId.'"> '.$scoresRow->score.' </td>';
-                            } 
-                        ?>
-                        </tr>
+                        <?php foreach($p4DataScore as $p4DataRow){ ?>
+                            <tr judgeid="<?= $p4DataRow['judgeId'] ?>">
+                                <th><?= $p4DataRow['judgeName'] ?> </th>
+                                <?= self::scores_list($p4DataRow['scores']); ?>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                     </table>
                     <hr>
                     <?php 
-                        $counter++;
                         }  
                     ?>
                 </div>

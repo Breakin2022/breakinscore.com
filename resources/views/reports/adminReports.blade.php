@@ -2,6 +2,7 @@
 @section('title','Competitive breakin League')
 @section('current-page','Options')
 @section('main-section')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/css/bootstrap-slider.css">
 
 <div id="content-panel">
 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -75,33 +76,65 @@
     </div>
   </div><!-- container-fluid end -->
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="scoreModal" tabindex="-1" role="dialog" aria-labelledby="scoreModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="width: 80%; float: left;">Score</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div id="response"></div>
+        <table class="table table-hover table-striped table-sm" scoreid="157">
+          <tbody>
+            <tr>
+              <th>Judge</th>
+              <td id="judge-name"></td>
+            </tr>
+            <tr>
+              <th>Criteria</th>
+              <td id="criteria-name"></td>
+            </tr>
+            <tr>
+              <th>Score</th>
+              <td>
+                <div class="form-group row">
+                  <label id="crrScore" class="col-sm-2 col-form-label"></label>
+                  <div class="col-sm-10">
+                    <input 
+                      id="score" 
+                      data-slider-id='scoreSlider'
+                      type="text" 
+                      data-slider-min="-10" 
+                      data-slider-max="10" 
+                      data-slider-step="1"
+                      data-slider-value="0" />
+                      <input type="hidden" id="criteriaScore" value="" />
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="update-score" class="btn btn-primary btn-xs bg-purple">Update Score</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script  type="text/javascript" src="{{URL::asset('public/js/bootstrap.min.js')}}"></script>
-<script  type="text/javascript" src="{{URL::asset('public/js/menu/metisMenu.min.js')}}"></script>
-<script type="text/javascript" src="{{URL::asset('public/js/menu/nanoscroller.js')}}"></script>
-<script type="text/javascript" src="{{URL::asset('public/js/moment.js')}}"></script>
-<script type="text/javascript" src="{{URL::asset('public/js/daterangepicker/daterangepicker.js')}}"></script>
-<!-- CountTo Script -->
-<script type="text/javascript" src="{{URL::asset('public/js/countTo/jquery.countTo.js')}}"></script>
-<!-- Morris Chart Script -->
-<script  type="text/javascript" src="{{URL::asset('public/js/morris-js/raphael.min.js')}}"></script>
-<script  type="text/javascript" src="{{URL::asset('public/js/morris-js/morris.min.js')}}"></script>
-<!-- Chart.js Script -->
-<script type="text/javascript" src="{{URL::asset('public/js/chart-js/Chart.js')}}"></script>
-<!-- Flot.js Script -->
-<script type="text/javascript" src="{{URL::asset('public/js/flot-js/excanvas.min.js')}}"></script>
-<script type="text/javascript" src="{{URL::asset('public/js/flot-js/jquery.flot.js')}}"></script>
-<script type="text/javascript" src="{{URL::asset('public/js/flot-js/jquery.flot.resize.js')}}"></script>
-<script type="text/javascript" src="{{URL::asset('public/js/flot-js/jquery.flot.time.js')}}"></script>
-<!-- Data Tables Script -->
-<script type="text/javascript" src="{{URL::asset('public/js/datatables/datatables.min.js')}}"></script>
-<!-- VMap Script -->
-<script type="text/javascript" src="{{URL::asset('public/js/vmap/jquery.vmap.js')}}"></script>
-<script type="text/javascript" src="{{URL::asset('public/js/vmap/maps/jquery.vmap.usa.js')}}"></script>
-<!-- Dashboard script -->
-<script type="text/javascript" src="{{URL::asset('public/js/jQuery.style.switcher.min.js')}}"></script>
-<script type="text/javascript" src="{{URL::asset('public/js/jquery-functions.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/bootstrap-slider.js"></script>
 <script>
 $(document).ready(function() {
+  /**
+  * To get Matches list
+  */
   $(document).on('change', 'select#competitionVenues', function(){
     var competition_id =  $(this).find(":selected").val();
     if(!competition_id){
@@ -136,6 +169,10 @@ $(document).ready(function() {
       }
     });
   });
+
+  /**
+  * To get selected Macth Scores
+   */
   $(document).on('change', 'select#match_teams', function(){
     var match_id =  $(this).find(":selected").val();
     if(!match_id){
@@ -164,6 +201,64 @@ $(document).ready(function() {
       }
     });
   });
+
+  $('#scoreModal #score').slider({
+      formatter: function (value) {
+        $('#scoreModal #crrScore').text(value);
+        return 'Current value: ' + value;
+      }
+  });
+
+  /**
+  * get edit Score
+  */
+  jQuery(document).on('click', '.edit-score, #update-score', function(){
+    var crrObject = $(this);
+    var action    = jQuery(crrObject).prop('id');
+    if(action=='update-score'){
+      var criteriaScoreID = parseInt( $('#scoreModal #criteriaScore').val() );
+      var score           = parseInt( $('#scoreModal input#score').val() );
+      if(criteriaScoreID && score){
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('input[name="_token"]').val()
+          }
+        });
+        $.ajax({
+          url   : "{{ url('/reports-update-score') }}",
+          method: 'post',
+          data  : {
+            id   : criteriaScoreID,
+            score: score
+          },
+          success: function (result) {
+            obj = JSON.parse(result);
+            /* obj will have 'status', 'data' */
+            if(obj.status == 'error'){
+              $('#scoreModal #response').html('<div class="alert alert-danger alert-dismissible show" role="alert"> <strong>Error!</strong> '+obj.data+' <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div>'); 
+            }else{
+              $('#scoreModal #response').html('<div class="alert alert-success alert-dismissible show" role="alert"> <strong>Success!</strong> '+obj.data+' <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div>'); 
+              $('#scoresRow_'+criteriaScoreID+' a').text(score);
+              $('#scoresRow_'+criteriaScoreID+' a').addClass('bg-purple');
+            }
+          }
+        }); /**Ajax Score Update */
+      }else{
+        alert('criteriaScoreID or score not set!');
+      }
+    }else{
+      var id       = $(crrObject).parent('td').prop('id').match(/\d+/);;
+      var crrScore = parseInt($(crrObject).text());
+      var Judge    = $(crrObject).parents('tr').find('th').text();
+      var Criteria = $(crrObject).parents('tbody').find('th[criteriaid="criteria_'+$(crrObject).parent('td').attr('criteriaid')+'"]').text();
+      $('#scoreModal #judge-name').text(Judge);
+      $('#scoreModal #criteria-name').text(Criteria);
+      $('#scoreModal #crrScore').text(crrScore);
+      $('#scoreModal #score').slider('setValue', crrScore);
+      $('#scoreModal  #criteriaScore').val(id);
+    }
+  });
+  
 });
 </script>
 </body>

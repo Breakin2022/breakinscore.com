@@ -36,9 +36,14 @@ Route::post('/stopMatchStartTimer','indexController@stopMatchStartTimer')->name(
 Route::get('/competitionscores/{id}','competitionVenue@competitionScores')->name('competitionScores');
 
 Route::get('/report/{id}','ReportController@show')->name('report');
+/**
+ * Admin Reports Routes
+ */
 Route::get('/reports','ReportController@reports')->name('reports');
 Route::post('/reports-teams', "ReportController@reports_teams")->name('getReportsTeams');
 Route::post('/reports-match', "ReportController@reports_match")->name('getReportsMatch');
+Route::post('/reports-update-score', "ReportController@update_score")->name('updateReportsScore');
+/** Admin Reports Routes End */
 
 Route::get('teamsRanking/{ageGroup?}','indexController@teamsRanking')->name('teamsRanking');
 Route::get('participantsRanking/{ageGroup?}','indexController@participantsRanking')->name('participantsRanking');
