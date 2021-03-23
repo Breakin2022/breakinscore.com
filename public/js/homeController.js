@@ -40,7 +40,7 @@ app.service('homeService',function($http){
         method: 'POST',
         url: '/api/getTeamScoreA',
         data:{
-          competition: competition
+          competition: competition 
         }
       });
     },
@@ -626,10 +626,6 @@ app.controller('homeController',function($scope,homeService ,$interval,$timeout,
       $scope.isLoadingViewIsLoaded = false;
       homeService.getTeamScore(argObj).then(function(response){
         debug('inside getteamscore ', argObj,'response', response);
-        // l('mawais');
-        // l(argObj);
-        // l(response);
-        // l('inside getteamscore');
         $scope.teamVsMatch  = {
             t1name: response.data[0].t1name,
             t2name: response.data[0].t2name,

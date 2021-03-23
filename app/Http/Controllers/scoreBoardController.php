@@ -157,6 +157,8 @@ class scoreBoardController extends Controller
 
       return $match;
     }
+
+    
     public function getStopTimerStatus(Request $request){
       $competition = (object)$request->competition[0];
       $competitionId = $competition->competitionId;
