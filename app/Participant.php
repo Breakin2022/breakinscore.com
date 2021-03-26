@@ -11,4 +11,7 @@ class Participant extends Model
   public function rank(){
     return $this->hasOne('App\PlayersRank','participantId','id');
   }
+  public function ranking(){
+    return $this->hasMany('App\Ranking','participantId','id');
+  }
 }

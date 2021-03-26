@@ -252,7 +252,7 @@ class competitionVenue extends Controller
                 'criteriasName' => $criteriasName,
                 'competitionList'=> $competitionList,
                 'allTeams'=>$allTeams,
-                'teamsId'=>$teams,
+                'teamsId'=>$teams, 
                 'topTeams'=>$TopTeams,
                 'filteredTeams' => $filteredTeams,
                 'matchesSizeInCurrent'=>$matchesSizeInCurrent,
