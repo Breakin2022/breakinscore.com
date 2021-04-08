@@ -95,6 +95,7 @@
     <li><a href="{{route("sponsors.index")}}" ><i class="fa  fa-users" aria-hidden="true"></i> <span class="link-hide"> Sponsors </span></a></li>
     <li><a href="{{route("criteria.index")}}" ><i class="fa  fa-users" aria-hidden="true"></i> <span class="link-hide"> Criteria </span></a></li>
     <li><a href="{{route("reports")}}" ><i class="fa fa-star-half-o" aria-hidden="true"></i> <span class="link-hide"> Reports </span></a></li>
+    <li><a href="{{url('/ranking')}}" ><i class="fa fa-line-chart" aria-hidden="true"></i> <span class="link-hide"> Ranking </span></a></li>
     <li><hr></li>
     <li><a href="{{route("options.index")}}" ><i class="fa fa-cog" aria-hidden="true"></i> <span class="link-hide"> Options </span></a></li>
     </ul>

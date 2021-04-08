@@ -198,17 +198,17 @@ class indexController extends Controller
 
     public function teamsRanking($ageGroup = null){
       $title = 'Teams Ranking';      
-      $website_title = DB::table('options')->where('option_name', 'website_title')->value('option_value');
-      $website_logo     = DB::table('options')->where('option_name', 'website_logo')->value('option_value');
+    $website_title = DB::table('options')->where('option_name', 'website_title')->value('option_value');
+    $website_logo     = DB::table('options')->where('option_name', 'website_logo')->value('option_value');
 
-      $teams = Team::join('teamsRanks','teamsRanks.teamId','=','teams.id')->where('ageGroup','!=', 0)->orderBy('teamsRanks.rank','desc')->get();
+      $teams = Team::join('teamsRanks','teamsRanks.teamId','=','teams.id')->where('ageGroup','!=', 0)->orderBy('teamsRanks.rank','desc')->limit(200)->get();
       return view('reports.teamRanks',compact( 'title', 'teams', 'website_title', 'website_logo'));
     }
     public function participantsRanking($ageGroup = null){
       $title = 'Participants Ranking';
       $website_title = DB::table('options')->where('option_name', 'website_title')->value('option_value');
       $website_logo     = DB::table('options')->where('option_name', 'website_logo')->value('option_value');
-      $participants = Participant::join('playersRank','playersRank.participantId','=','participant.id')->where('ageGroup','!=',0)->orderBy('playersRank.rank','desc')->get();
+      $participants = Participant::join('playersRank','playersRank.participantId','=','participant.id')->where('ageGroup','!=',0)->orderBy('playersRank.rank','desc')->limit(200)->get();
       return view('reports.playerRanks',compact( 'title', 'participants', 'website_title', 'website_logo'));
     }
     public function index2()
@@ -286,7 +286,43 @@ class indexController extends Controller
             $match->t2score = DB::table('scores')->where('matchId', '=', $match->id)->where('teamId', '=', $match->secondTeam)->sum('score');
             return $match;
         });
-        ?>
+        // dd($matches);
+        // $newCollection = DB::select("Select Sum(score) as Score, judgeId,color,Max(name) as JudgeName,
+        //         Case When Color = 'red' then Max(redtid) Else Max(bluetid) End as TeamId
+        //         From (
+        //         	SELECT S.score,S.judgeId,S.participantId,S.matchId,JD.name,M.redtid, M.bluetid,
+        //         	(Select color From teams
+        //         		INNER JOIN teamsmembers ON teams.id = teamsmembers.tid
+        //         	Where teamsmembers.pid = S.participantId
+        //         	And (teams.id = M.redtid OR teams.id = M.bluetid)
+        //         	Limit 1) as color
+        //         	 FROM scores S
+        //         	INNER JOIN matches M ON S.matchId = M.Id
+        //         	INNER JOIN judges JD on S.judgeId = JD.id
+        //         	where S.matchId = $matchId
+        //         ) as tt
+        //         group by judgeId,color");
+        //         foreach($newCollection as $colection){
+        //           if (strtolower($colection->color) == 'blue') {
+        //             $blueTeam = DB::table('teams')->where('id', $colection->TeamId)->get();
+        //
+        //           }
+        //           if (strtolower($colection->color) == 'red') {
+        //             $redTeam = DB::table('teams')->where('id', $colection->TeamId)->get();
+        //
+        //           }
+        //         }
+        //         // dd($newCollection);
+        //         $blueTeams = Array();
+        //         $redTeams = Array();
+        //         foreach ($newCollection as $Collection) {
+        //           if (strtolower($Collection->color) == 'blue') {
+        //             $blueTeams[] = $Collection;
+        //           }
+        //           if (strtolower($Collection->color) == 'red') {
+        //             $redTeams[] = $Collection;
+        //           }
+        //         } ?>
         <thead>
           <tr>
 

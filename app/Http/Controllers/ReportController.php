@@ -19,6 +19,7 @@ use App\Sponsor;
 use App\Team;
 use App\TeamsMember;
 use App\TeamsRank;
+use App\Ranking;
 use Hash;
 use Auth;
 use Response;
@@ -32,6 +33,243 @@ class ReportController extends Controller
     {
         $this->middleware('auth');
     }
+
+    /**
+     * * function updateWinnerTeamAndPlayersAndScore($competitionId, $matchId) used in App\Helpers\Helpers  Helpers to update rank
+     */
+
+    public static function updateWinnerTeamAndPlayersAndScore($competitionId = 16, $matchId = 64)
+    {
+        $competition = DB::table('competitionVenues')->where('id', $competitionId)->first();
+        $matches     = DB::table('matches')->where('id', $matchId)->first();
+
+        $competition->round = 1;
+
+        $competition->matches       = $matches;
+        $matches->firstTeamMembers  = DB::Table('teamsmembers')->where('tid', $matches->firstTeam)->get();
+        $matches->secondTeamMembers = DB::Table('teamsmembers')->where('tid', $matches->secondTeam)->get();
+        
+        $matches->firstTeamMembers = $matches->firstTeamMembers->map(function ($teamMembers) use ($competition,$matchId) {
+            
+            /* Test Get scores
+            echo "competition->id: ".$competition->id. " teamMembers->tid: " .$teamMembers->tid . " matchId: " . $matchId . " competition->round: " . $competition->round; 
+            */
+            $idofScore = DB::table('scores')->where('competitionId', $competition->id)->where('teamId', $teamMembers->tid)->where('matchId', $matchId)->where('roundNo', $competition->round)->get();
+            $idofScore = $idofScore->pluck('id');
+            $criteriaScore = DB::table('criteriaScore')->whereIn('scoreId', $idofScore)->get();
+            $teamMembers->totalScore = $criteriaScore->sum('score');
+            $teamMembers->score = $criteriaScore;
+            return $teamMembers;    
+        });
+        
+        $matches->secondTeamMembers = $matches->secondTeamMembers->map(function ($teamMembers) use ($competition,$matchId) {
+            $idofScore = DB::table('scores')->where('competitionId', $competition->id)->where('teamId', $teamMembers->tid)->where('matchId', $matchId)->where('roundNo', $competition->round)->get();
+            $idofScore = $idofScore->pluck('id');
+            $criteriaScore = DB::table('criteriaScore')->whereIn('scoreId', $idofScore)->get();
+            $teamMembers->totalScore = $criteriaScore->sum('score');
+            $teamMembers->score = $criteriaScore;
+            return $teamMembers;
+        });
+
+        $firstTeamScore = $matches->firstTeamMembers->sum('totalScore');
+        $secondTeamScore = $matches->secondTeamMembers->sum('totalScore');
+
+        $other_details = array(
+            'competitionId'   => $competitionId,
+            'competitionType' => $competition->type,
+            'matchId'         => $matchId
+        );
+
+        if ($competition->round == 1 && $firstTeamScore == $secondTeamScore) {
+            self::increaseTeamAndPlayerRank($matches->firstTeamMembers, $matches->firstTeam, 1, $other_details);
+            self::increaseTeamAndPlayerRank($matches->secondTeamMembers, $matches->secondTeam, 1, $other_details);
+            return 3;
+        }
+        if ($firstTeamScore == $secondTeamScore) {
+            return 2;
+        }
+        if ($firstTeamScore > $secondTeamScore) {
+            self::increaseTeamAndPlayerRank($matches->firstTeamMembers, $matches->firstTeam, 2, $other_details);
+            self::decreaseTeamAndPlayerRank($matches->secondTeamMembers, $matches->secondTeam, $other_details);
+        } else {
+            self::increaseTeamAndPlayerRank($matches->secondTeamMembers, $matches->secondTeam, 2, $other_details);
+            self::decreaseTeamAndPlayerRank($matches->firstTeamMembers, $matches->firstTeam, $other_details);
+        }
+
+        return 1;
+    }
+
+    protected static function insert_ranking($other_details, $teamId, $teamNewRank, $teamMemberAgeGroup, $pid, $playerNewRank, $ageGroup){
+        $competitionId       = $other_details['competitionId'];
+        $competitionType     = $other_details['competitionType'];
+        $matchId             = $other_details['matchId'];
+        $teamId              = $teamId;
+        $teamRank            = $teamNewRank;
+        $teamAgeGroup        = $teamMemberAgeGroup;
+        $participantId       = $pid;
+        $participantRank     = $playerNewRank;
+        $participantAgeGroup = $ageGroup;
+        
+        DB::table('rankings')->insert(
+            [
+              'competitionId'       => $competitionId,
+              'competitionType'     => $competitionType,
+              'matchId'             => $matchId,
+              'teamId'              => $teamId,
+              'teamRank'            => $teamRank,
+              'teamAgeGroup'        => $teamAgeGroup,
+              'participantId'       => $participantId,
+              'participantRank'     => $participantRank,
+              'participantAgeGroup' => $participantAgeGroup,
+              "created_at"          => date('Y-m-d H:i:s'),
+              "updated_at"          => date('Y-m-d H:i:s'),
+            ]
+        );
+    }
+
+    protected static function decreaseTeamAndPlayerRank($teamMembers, $teamId, $other_details)
+    {
+        $teamMemberAgeGroup = self::getAgeGroupOfTeamMember($teamId);
+        $teamRank           = DB::Table('teamsRanks')->where('teamId', $teamId)->first();
+        $teamNewRank        = $playerNewRank = 0;
+        if ($teamRank != null) {
+            if($teamRank->rank > 0){
+                $teamNewRank = intval($teamRank->rank) - 1;
+                DB::Table('teamsRanks')->where('teamId', $teamId)->update(['rank' => $teamNewRank]);
+            }
+            if($teamRank->ageGroup != $teamMemberAgeGroup){
+                DB::Table('teamsRanks')->where('teamId', $teamId)->update(['ageGroup' => $teamMemberAgeGroup]);
+            }
+        }
+        foreach ($teamMembers as $teammember) {
+            $pid = $teammember->pid;
+            $ageGroup = self::getAgeGroup($pid);
+            $playersRank = DB::table('playersRank')->where('participantId', $pid)->first();
+            if ($playersRank != null) {
+                if($playersRank->rank > 0){
+                    $playerNewRank = intval($playersRank->rank) - 1;
+                    DB::Table('playersRank')->where('participantId', $pid)->update(['rank' => $playerNewRank]);
+                }
+                if($playersRank->ageGroup != $ageGroup){
+                    DB::Table('playersRank')->where('participantId', $pid)->update(['ageGroup' => $ageGroup]);
+                }
+            }
+            if( ($teamRank != null) && ($playersRank != null) ){
+                self::insert_ranking($other_details, $teamId, $teamNewRank, $teamMemberAgeGroup, $pid, $playerNewRank, $ageGroup);   
+            }
+        }
+    }
+
+    protected static function increaseTeamAndPlayerRank($teamMembers, $teamId, $howMuchIncrement = 2, $other_details){
+        $teamMemberAgeGroup = self::getAgeGroupOfTeamMember($teamId);
+        $teamNewRank        = $playerNewRank = 2;
+        $teamRank           = DB::Table('teamsRanks')->where('teamId', $teamId)->first();
+        if ( $teamRank != null ) {
+            $teamNewRank = intval($teamRank->rank) + $howMuchIncrement;
+            DB::Table('teamsRanks')->where('teamId', $teamId)->update(['rank' => $teamNewRank]);
+            
+            if($teamRank->ageGroup != $teamMemberAgeGroup){
+                DB::Table('teamsRanks')->where('teamId', $teamId)->update(['ageGroup' => $teamMemberAgeGroup]);
+            }
+        } else {
+            DB::Table('teamsRanks')->insert([
+                'teamId'=>$teamId,
+                'rank'=>$howMuchIncrement,
+                'ageGroup'=>$teamMemberAgeGroup
+              ]);
+        }
+        foreach ($teamMembers as $teammember) {
+            $pid         = $teammember->pid;
+            $ageGroup    = self::getAgeGroup($pid);
+            $playersRank = DB::table('playersRank')->where('participantId', $pid)->first();
+            if ($playersRank == null) {
+                DB::table('playersRank')->insert([
+                  'participantId'=>$pid,
+                  'rank'=>$howMuchIncrement,
+                  'ageGroup'=>$ageGroup
+                ]);
+            }else{
+                $playerNewRank = intval($playersRank->rank) + $howMuchIncrement;
+                DB::Table('playersRank')->where('participantId', $pid)->update(['rank' => $playerNewRank]);
+                $playerNewRank = $playersRank->rank;
+                if($playersRank->ageGroup != $ageGroup){
+                    DB::Table('playersRank')->where('participantId', $pid)->update(['ageGroup' => $ageGroup]);
+                }
+            }
+            
+            if( ($teamRank != null) && ($playersRank != null) ){
+                self::insert_ranking($other_details, $teamId, $teamNewRank, $teamMemberAgeGroup, $pid, $playerNewRank, $ageGroup);   
+            }
+        }
+    }
+
+    /*
+    there 3 age groups
+    between 5 year to 12
+    between 13 to 18
+    greater than 18 i.e 18++;
+    */
+    protected static function getAgeGroupOfTeamMember($teamId)
+    {
+        $teamsMember = DB::table('teamsmembers')->where('tid', $teamId)->first();
+        return self::getAgeGroup($teamsMember->pid);
+    }
+
+    protected static function getAgeGroup($participantId)
+    {
+        $participant = Participant::where('id', $participantId)->first();
+        if ($participant->dob == null || $participant->dob == "") {
+            return 0;
+        }
+        $age = \Carbon\Carbon::parse($participant->dob)->age;
+        if ($age >= 5 && $age < 13) {
+            return 1;
+        } elseif ($age >= 13 && $age < 18) {
+            return 2;
+        } else {
+            return 3;
+        }
+    }
+
+    /**--------------------------------------------------------------------------------- */
+
+    /**
+     * * getTeamScore( ) is used in scoreBoardController.php to fetch and current match score on 
+     *  vs. screen to show scores to participants
+     */
+    public function getTeamScore(Request $request){
+        $competitionId = 14;
+        $matchId = 74;
+  
+        $match = DB::table('matches')->where('matches.id','=',$matchId)
+        ->leftJoin('teams as t1',function($join){
+          $join->on('matches.firstTeam','=','t1.id');
+        })
+        ->leftjoin('teams as t2',function($join){
+          $join->on('matches.secondTeam','=','t2.id');
+        })
+        ->select('matches.id','t1.name as t1name','t2.name as t2name','t1.id as t1id','t2.id as t2id' )
+        ->get();
+  
+        $match->map(function($match)use($competitionId,$matchId){
+          $t1Score = Score::where('competitionId','=',$competitionId)->where('teamId','=',$match->t1id)->where('matchId','=',$matchId)->get();
+          $t1Score->map(function($score){
+            $score->score = $score->criterias->sum('score')/$score->criterias->count();
+            return $score;
+          });
+          $match->t1score = round( $t1Score->sum('score')/$t1Score->count() , 2);
+
+          $t2Score = Score::where('competitionId','=',$competitionId)->where('teamId','=',$match->t2id)->where('matchId','=',$matchId)->get();
+          $t2Score = $t2Score->map(function($score){
+            $score->score = $score->criterias->sum('score')/$score->criterias->count();
+            return $score;
+          });
+          $match->t2score = round( $t2Score->sum('score')/$t2Score->count() , 2);
+          return $match;
+        });
+  
+        dd($match);
+      }
 
     public function reports(){
         $competitionVenues = DB::table('competitionVenues')->orderByDesc('id')->get();
@@ -178,7 +416,7 @@ class ReportController extends Controller
                   <tbody>
                     <tr>
                       <th>Judge</th>
-                      <?= $criteria_html ?>
+                      <?= $criteria_html; ?>
                     </tr>
                     <?php foreach($p1DataScore as $p1DataRow){ ?>
                         <tr judgeid="<?= $p1DataRow['judgeId'] ?>">
@@ -205,7 +443,7 @@ class ReportController extends Controller
                   <tbody>
                     <tr>
                       <th>Judge</th>
-                      <?= $criteria_html ?>
+                      <?= $criteria_html; ?>
                     </tr>
                     <?php foreach($p2DataScore as $p2DataRow){ ?>
                         <tr judgeid="<?= $p2DataRow['judgeId'] ?>">
@@ -337,7 +575,7 @@ class ReportController extends Controller
                     <tbody>
                         <tr>
                         <th>Judge</th>
-                        <?= $criteria_html ?>
+                        <?= $criteria_html; ?>
                         </tr>
                         <?php foreach($p1DataScore as $p1DataRow){ ?>
                             <tr judgeid="<?= $p1DataRow['judgeId'] ?>">
@@ -363,7 +601,7 @@ class ReportController extends Controller
                     <tbody>
                         <tr>
                         <th>Judge</th>
-                        <?= $criteria_html ?>
+                        <?= $criteria_html; ?>
                         </tr>
                         <?php foreach($p2DataScore as $p2DataRow){ ?>
                             <tr judgeid="<?= $p2DataRow['judgeId'] ?>">
@@ -390,7 +628,7 @@ class ReportController extends Controller
                     <tbody>
                         <tr>
                         <th>Judge</th>
-                        <?= $criteria_html ?>
+                        <?= $criteria_html; ?>
                         </tr>
                         <?php foreach($p3DataScore as $p3DataRow){ ?>
                             <tr judgeid="<?= $p3DataRow['judgeId'] ?>">
@@ -416,7 +654,7 @@ class ReportController extends Controller
                     <tbody>
                         <tr>
                         <th>Judge</th>
-                        <?= $criteria_html ?>
+                        <?= $criteria_html; ?>
                         </tr>
                         <?php foreach($p4DataScore as $p4DataRow){ ?>
                             <tr judgeid="<?= $p4DataRow['judgeId'] ?>">

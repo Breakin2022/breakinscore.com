@@ -34,11 +34,13 @@ Route::get('/report/{id}','ReportController@show')->name('report');
 /**
  * Admin Reports Routes
  */
+Route::get("/ranking", "RankingController@index")->name('ranking');
 Route::get('/reports','ReportController@reports')->name('reports');
 Route::post('/reports-teams', "ReportController@reports_teams")->name('getReportsTeams');
 Route::post('/reports-match', "ReportController@reports_match")->name('getReportsMatch');
 Route::post('/reports-update-score', "ReportController@update_score")->name('updateReportsScore');
 // To test getTeamScore() on vs. screen Route::get('/getTeamScore', "ReportController@getTeamScore");
+// To test updateWinnerTeamAndPlayersAndScore($competitionId = null, $matchId = null) to update ranks Route::get('/update-ranks', "ReportController@updateWinnerTeamAndPlayersAndScore");
 /** Admin Reports Routes End */
 Route::get('teamsRanking/{ageGroup?}','indexController@teamsRanking')->name('teamsRanking');
 Route::get('participantsRanking/{ageGroup?}','indexController@participantsRanking')->name('participantsRanking');

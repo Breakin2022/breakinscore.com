@@ -50,7 +50,7 @@ Route::post('lhr','indexController@stopMatchStartTimer');
 Route::post('getAllCompetition','scoreBoardController@getCompetition');
 Route::post('getNotificationDetails','scoreBoardController@getNotificationDetails');
 Route::post('getStopTimerStatus','scoreBoardController@getStopTimerStatus');
-Route::post('getTeamScoreA','scoreBoardController@getTeamScore'); 
+Route::post('getTeamScoreA','scoreBoardController@getTeamScore');
 Route::post('getScoreOf8teams','scoreBoardController@getScoreOf8teams');
 Route::post('getdisplay16ViewUpdate','scoreBoardController@getdisplay16ViewUpdate');
 Route::post('getSpecficRoundTeamsScore','scoreBoardController@getSpecficRoundTeamsScore');

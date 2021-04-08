@@ -130,8 +130,12 @@
 
 <script  type="text/javascript" src="{{URL::asset('public/js/bootstrap.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/bootstrap-slider.js"></script>
+<script  type="text/javascript" src="{{URL::asset('public/js/menu/metisMenu.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('public/js/menu/nanoscroller.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('public/js/jquery-functions.js')}}"></script>
 <script>
 $(document).ready(function() {
+
   /**
   * To get Matches list
   */

@@ -7,30 +7,26 @@
     margin: 0;
     padding: 0;
   }
-  
   @if ($round > 1)
     .actionCls{
       display: none;
     }
   @endif
-
   @if($round >= 2)
   #showBtnSchudle{
     display: none;
   }
-
   @elseif ($round <  2)
   #nextRoundBtn{
     display: none;
   }
-  @endif
 
+  @endif
   @if ($round >= 2)
   #content-panel .panel{
     padding-bottom: 20px !important;
   }
   @endif
-
   .select2-container{
     width: 160px !important;
   }
