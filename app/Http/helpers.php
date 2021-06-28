@@ -506,20 +506,24 @@ class Helpers
         })->leftJoin('teams as t2', function ($join) {
             $join->on('matches.secondTeam', '=', 't2.id');
         })->select('matches.*', 't1.name as t1name', 't2.name  as t2name')->get();
+
         $matches->map(function ($match) use ($competition) {
+            $competition_criterias  = DB::table('competition_criterias')->where('competitionid', $competition->id)->join('criterias', 'criterias.id' ,'=', 'competition_criterias.criteriaid')->count();
+
             $t1score = Score::where('competitionId', '=', $competition->id)->where('roundNo', '=', $competition->round)->where('teamId', '=', $match->firstTeam)->get();
             $t1score = $t1score->map(function ($score) {
                 $score->score = $score->criterias->sum('score');
                 return $score;
             });
-            $match->t1score = $t1score->sum('score');
+            $match->t1score = round($t1score->sum('score')/$competition_criterias, 2);
+
             $t2score = Score::where('competitionId', '=', $competition->id)->where('roundNo', '=', $competition->round)->where('teamId', '=', $match->secondTeam)->get();
             $t2score = $t2score->map(function ($score) {
                 $score->score = $score->criterias->sum('score');
                 return $score;
             });
 
-            $match->t2score = $t2score->sum('score');
+            $match->t2score = round($t2score->sum('score')/$competition_criterias, 2);
             return $match;
         });
         return $matches;

@@ -47,7 +47,7 @@ Route::post('/test', 'ApiController@test');
 Route::post('/stopMatchStartTimer','ApiController@stopMatchStartTimer');
 
 Route::post('lhr','indexController@stopMatchStartTimer');
-Route::post('getAllCompetition','scoreBoardController@getCompetition');
+Route::post('getAllCompetition','scoreBoardController@getCompetition'); 
 Route::post('getNotificationDetails','scoreBoardController@getNotificationDetails');
 Route::post('getStopTimerStatus','scoreBoardController@getStopTimerStatus');
 Route::post('getTeamScoreA','scoreBoardController@getTeamScore');

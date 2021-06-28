@@ -180,7 +180,7 @@ class scoreBoardController extends Controller
       return $competitions;
     }
     public function getCompetition(){
-      $dateCurrent = new DateTime();
+      $dateCurrent = new DateTime(); 
       $dateOld = new DateTime();
       date_sub($dateOld, date_interval_create_from_date_string("1 days"));
       $dateCurrent = date_format($dateCurrent, "Y-m-d");

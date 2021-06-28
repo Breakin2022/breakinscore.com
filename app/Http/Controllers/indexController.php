@@ -97,7 +97,7 @@ class indexController extends Controller
 
         return $competition;
       });
-      // $cos
+      // $cos 
       // criteriasCount
 
       $sponsors = DB::table('sponsors')->get();
