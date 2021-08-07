@@ -182,7 +182,7 @@ class ApiController extends Controller
       return Helper::makeJsonResponse('Invalid score', '0');
     }
     $save = DB::table('scores')->insert([
-      'judgeId'        => $judgeId,
+      'judgeId'        => $judgeId, 
       'participantId'  => $participantId,
       'matchId'        => $matchId,
       'score'          => $score,

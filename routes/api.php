@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 
 Route::prefix('v2')->group(function () {
   Route::post('/register', 'ApiControllerV2@register');
-  Route::post('/login', 'ApiControllerV2@login');
+  Route::post('/login', 'ApiControllerV2@login'); 
   Route::post('/insertScore', 'ApiControllerV2@insertScore');
   Route::post('/insertMyScore', 'ApiControllerV2@insertMyScore');
   Route::post('/getSponsors', 'ApiControllerV2@SponsorsList');

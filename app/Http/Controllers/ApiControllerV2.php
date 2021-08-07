@@ -253,11 +253,8 @@ class ApiControllerV2 extends Controller
     $matchId        = $request->matchId;
     $score          = $request->score;
     $isLast         = $request->isLast;
-
-    // $scoreArray = json_decode($score);
     $scoreArray = $score;
-    // dd($scoreArray);
-    // die('');
+
     if ($judgeId == null || $participantId == null || $matchId == null || $score == null) {
       return Helper::makeJsonResponse('One of field is missing', '0');
     }
@@ -269,11 +266,9 @@ class ApiControllerV2 extends Controller
       return Helper::makeJsonResponse('Participant does not exists', '0');
     }
 
-
     if (!DB::table('matches')->where('id', $matchId)->exists()) {
       return Helper::makeJsonResponse('Match does not exists', '0');
     }
-
 
     $match = DB::table('matches')->where('id','=',$matchId)->first();
     $competitionId = $match->competitionId;
@@ -288,7 +283,6 @@ class ApiControllerV2 extends Controller
     }elseif (DB::table('teamsmembers')->where('pid','=',$participantId)->where('tid','=',$secondTeamId)->exists()) {
       $teamsWhichHavethisParticipent =  $secondTeamId;
     }
-
 
     if ($isLast == 1) {
       DB::table('matches')->where('id', $matchId)->update([
@@ -338,8 +332,8 @@ class ApiControllerV2 extends Controller
     }else{
       return Helper::makeJsonResponse('score insertion failed', '0');
     }
-
   }
+
   public function insertscoresofmatch($matchId,$competitionid)
   {
 

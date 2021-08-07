@@ -339,34 +339,54 @@ class Helpers
     public static function getMatchesScoreN($matches, $competitionId, $compeition = null)
     {
         $matches = $matches->map(function ($match) use ($competitionId,$compeition) {
-            // $match->t1score = DB::table('scores')->where('competitionId','=',$match->competitionId)->where('roundNo','=',$match->roundNo)->where('teamId','=',$match->t1id)->where('matchId','=',$match->matchId)->sum('score');
+            $competition_criterias  = DB::table('competition_criterias')->where('competitionid', $competitionId)->join('criterias', 'criterias.id' ,'=', 'competition_criterias.criteriaid')->count();
+
             $t1Score = Score::where('competitionId', '=', $match->competitionId)->where('roundNo', '=', $match->roundNo)->where('teamId', '=', $match->t1id)->where('matchId', '=', $match->matchId)->get();
+            
+            $judges = $t1Score->map(function ($judge) {
+                return $judge->judgeId;
+            });
+            
+            $judges_unique = $judges->unique();
+            $judges_total = ( count($judges_unique) > 0 )? count($judges_unique) : 1;
+
             $match->t1score = $t1Score->map(function ($score) {
                 $score->score = $score->criterias->sum('score');
                 return $score;
             })->sum('score');
+            if( $match->t1score > 0){
+                $match->t1score = round( ($match->t1score/$competition_criterias)/$judges_total , 2);
+            }
+
             $t2Score = Score::where('competitionId', '=', $match->competitionId)->where('roundNo', '=', $match->roundNo)->where('teamId', '=', $match->t2id)->where('matchId', '=', $match->matchId)->get();
             $match->t2score = $t2Score->map(function ($score) {
                 $score->score = $score->criterias->sum('score');
                 return $score;
             })->sum('score');
-
+            if( $match->t2score > 0){
+                $match->t2score = round( ($match->t2score/$competition_criterias)/$judges_total , 2);
+            }
             if ($compeition != null) {
                 if ($compeition->winnerTeamId != null) {
                     $match->winner = (DB::table('teams')->where('id', '=', $compeition->winnerTeamId)->select('name')->first())->name;
-                    // $match->winnerScore = DB::table('scores')->where('competitionId','=',$competitionId)->where('matchId','=',$match->matchId)->where('teamId','=',$compeition->winnerTeamId)->sum('score');
                     $scoreS = Score::where('competitionId', '=', $competitionId)->where('matchId', '=', $match->matchId)->where('teamId', '=', $compeition->winnerTeamId)->get();
                     $scoreS = $scoreS->map(function ($score) {
                         $score->score = $score->criterias->sum('score');
                         return $score;
                     });
-                    $match->winnerScore = $scoreS->sum('score');
+                    
+                    if( $scoreS->sum('score') > 0 ){
+                        $match->winnerScore =  round( ($scoreS->sum('score')/$competition_criterias)/$judges_total , 2);
+                    }else{
+                        $match->winnerScore = $scoreS->sum('score');
+                    }
                 }
             }
             return $match;
         });
         return $matches;
     }
+
     public static function getTeamsWithIdAndRoundForFourTeams($competitionId, $compeition = null)
     {
         $collection = (object)[];
@@ -511,11 +531,22 @@ class Helpers
             $competition_criterias  = DB::table('competition_criterias')->where('competitionid', $competition->id)->join('criterias', 'criterias.id' ,'=', 'competition_criterias.criteriaid')->count();
 
             $t1score = Score::where('competitionId', '=', $competition->id)->where('roundNo', '=', $competition->round)->where('teamId', '=', $match->firstTeam)->get();
+
+            $judges = $t1score->map(function ($judge) {
+                return $judge->judgeId;
+            });
+            
+            $judges_unique = $judges->unique();
+            $judges_total = ( count($judges_unique) > 0 )? count($judges_unique) : 1;
+
             $t1score = $t1score->map(function ($score) {
                 $score->score = $score->criterias->sum('score');
                 return $score;
             });
-            $match->t1score = round($t1score->sum('score')/$competition_criterias, 2);
+
+            $t1scoreBycriterias = $t1score->sum('score')/$competition_criterias;
+
+            $match->t1score = round( $t1scoreBycriterias/$judges_total, 2);
 
             $t2score = Score::where('competitionId', '=', $competition->id)->where('roundNo', '=', $competition->round)->where('teamId', '=', $match->secondTeam)->get();
             $t2score = $t2score->map(function ($score) {
@@ -523,7 +554,9 @@ class Helpers
                 return $score;
             });
 
-            $match->t2score = round($t2score->sum('score')/$competition_criterias, 2);
+            $t2scoreBycriterias = $t2score->sum('score')/$competition_criterias;
+
+            $match->t2score = round( $t2scoreBycriterias/$judges_total, 2);
             return $match;
         });
         return $matches;
